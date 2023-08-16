@@ -1,0 +1,27 @@
+.Flex {
+    display: flex;
+}
+
+.Justify-content-center {
+    justify-content: center;
+}
+
+.Align-items-center {
+    align-items: center;
+}
+
+.Flex-direction-column {
+    flex-direction: column;
+}
+
+.Flex-1 {
+    flex: 1;
+}
+
+.Full_width {
+    width: 100%;
+}
+
+.Full_height {
+    height: 100%;
+}
