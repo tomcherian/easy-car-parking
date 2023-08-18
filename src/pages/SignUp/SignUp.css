@@ -1,0 +1,138 @@
+.SignUp_container {
+  background-image: url("../../assets/images/BackgroundImage.jpg");
+  background-size: cover;
+  background-position: center;
+  width: 100vw;
+  height: 100vh;
+  opacity: 0.8;
+  position: relative;
+}
+
+.SignUp_card {
+  padding: 44px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 118px;
+  min-width: 540px;
+  border-radius: 40px;
+  background: rgba(255, 255, 255, 0.75);
+  max-height: 80vh;
+  overflow-y: scroll;
+}
+
+.SignUp_card::-webkit-scrollbar-thumb {
+  display: none;
+}
+
+.SignUp_sign_up {
+  cursor: pointer;
+  top: 50px;
+  right: 44px;
+  position: absolute;
+  color: #779341;
+  font-family: Poppins;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.SignUp_welcome_title {
+  color: #000;
+  font-family: Poppins;
+  font-size: 21px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.SignUp_welcome_title_green {
+  color: #779341;
+  font-family: Poppins;
+  font-size: 21px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.SignUp_sign_in {
+  color: #000;
+  font-family: Poppins;
+  font-size: 55px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  margin-bottom: 44px;
+}
+
+.SignUp_field {
+  margin-bottom: 38px;
+}
+
+.SignUp_label {
+  color: #000;
+  font-family: Poppins;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-bottom: 13px;
+}
+
+.SignUp_input {
+  border-radius: 9px;
+  border: 1px solid #4285f4;
+  background: #fff;
+  padding: 19px 25px;
+  width: 100%;
+}
+
+.SignUp_input::placeholder {
+  color: #808080;
+  font-family: Poppins;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+}
+
+.SignUp_forgot_password {
+  margin-top: 12px;
+  color: #4285f4;
+  font-family: Poppins;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  width: 100%;
+  text-align: right;
+  margin-bottom: 44px;
+}
+
+.SignUp_button_wrapper {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+}
+
+.SignUp_button {
+  cursor: pointer;
+  border-radius: 10px;
+  background: #779341;
+  box-shadow: 0px 4px 19px 0px rgba(119, 147, 65, 0.3);
+  color: #fff;
+  font-family: Poppins;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  min-height: 54px;
+  min-width: 236px;
+  outline: none;
+  border: none;
+}
+
+body .invalid-feedback {
+  display: inline-block;
+}
