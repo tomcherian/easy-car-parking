@@ -2,21 +2,18 @@ import { useNavigate } from "react-router";
 import "./Login.css";
 import React, { useState } from "react";
 
-interface LoginWrapperInterface {
-  children?: JSX.Element;
-}
-function Login({ children }: LoginWrapperInterface) {
-  const [formData, setFormData] = useState<any>({
+function Login() {
+  const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
 
-  const [validationErrors, setValidationErrors] = useState<any>({
+  const [validationErrors, setValidationErrors] = useState({
     email: "",
     password: "",
   });
 
-  const [touchedFields, setTouchedFields] = useState<any>({
+  const [touchedFields, setTouchedFields] = useState({
     email: false,
     password: false,
   });
@@ -27,17 +24,17 @@ function Login({ children }: LoginWrapperInterface) {
     navigate("/signup");
   };
 
-  const validateEmail = (event: any) => {
+  const validateEmail = (event) => {
     if (!event.target.value) return "Email is required.";
     return "";
   };
 
-  const validatePassword = (event: any) => {
+  const validatePassword = (event) => {
     if (!event.target.value) return "Password is required.";
     return "";
   };
 
-  const validateField = (fieldName: any, event: any) => {
+  const validateField = (fieldName, event) => {
     switch (fieldName) {
       case "email":
         return validateEmail(event);
@@ -48,7 +45,7 @@ function Login({ children }: LoginWrapperInterface) {
     }
   };
 
-  const handleFieldChange = (fieldName: any, event: any) => {
+  const handleFieldChange = (fieldName, event) => {
     let updatedFormData = { ...formData, [fieldName]: event.target.value };
     setFormData(updatedFormData);
 
@@ -59,18 +56,18 @@ function Login({ children }: LoginWrapperInterface) {
     }
   };
 
-  const handleFieldBlur = (fieldName: any) => {
+  const handleFieldBlur = (fieldName) => {
     setTouchedFields({ ...touchedFields, [fieldName]: true });
     const value = formData[fieldName];
     const errorMessage = validateField(fieldName, { target: { value } });
     setValidationErrors({ ...validationErrors, [fieldName]: errorMessage });
   };
 
-  const handleSubmit = (event: any) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
 
     let hasErrors = false;
-    const updatedValidationErrors: any = {};
+    const updatedValidationErrors = {};
 
     for (const fieldName in formData) {
       const value = formData[fieldName];
@@ -85,7 +82,7 @@ function Login({ children }: LoginWrapperInterface) {
 
     setValidationErrors(updatedValidationErrors);
 
-    const updatedTouched: any = {};
+    const updatedTouched = {};
     for (const fieldName in formData) {
       updatedTouched[fieldName] = true;
     }

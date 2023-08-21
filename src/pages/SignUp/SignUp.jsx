@@ -2,8 +2,8 @@ import { useNavigate } from "react-router";
 import "./SignUp.css";
 import React, { useState } from "react";
 
-function LoginWrapper({ children }: any) {
-  const [formData, setFormData] = useState<any>({
+function LoginWrapper({ children }) {
+  const [formData, setFormData] = useState({
     email: "",
     username: "",
     password: "",
@@ -14,7 +14,7 @@ function LoginWrapper({ children }: any) {
     },
   });
 
-  const [validationErrors, setValidationErrors] = useState<any>({
+  const [validationErrors, setValidationErrors] = useState({
     email: "",
     username: "",
     password: "",
@@ -22,7 +22,7 @@ function LoginWrapper({ children }: any) {
     file: "",
   });
 
-  const [touchedFields, setTouchedFields] = useState<any>({
+  const [touchedFields, setTouchedFields] = useState({
     email: false,
     username: false,
     password: false,
@@ -36,27 +36,27 @@ function LoginWrapper({ children }: any) {
     navigate("/login");
   };
 
-  const validateEmail = (event: any) => {
+  const validateEmail = (event) => {
     if (!event.target.value) return "Email is required.";
     return "";
   };
 
-  const validateUsername = (event: any) => {
+  const validateUsername = (event) => {
     if (!event.target.value) return "Username is required.";
     return "";
   };
 
-  const validatePassword = (event: any) => {
+  const validatePassword = (event) => {
     if (!event.target.value) return "Password is required.";
     return "";
   };
 
-  const validateCarNumber = (event: any) => {
+  const validateCarNumber = (event) => {
     if (!event.target.value) return "Car Number is required.";
     return "";
   };
 
-  const validateFile = (event: any) => {
+  const validateFile = (event) => {
     if (
       !(
         (event.target.files && event.target.files[0]) ||
@@ -67,7 +67,7 @@ function LoginWrapper({ children }: any) {
     return "";
   };
 
-  const validateField = (fieldName: any, event: any) => {
+  const validateField = (fieldName, event) => {
     switch (fieldName) {
       case "email":
         return validateEmail(event);
@@ -84,14 +84,14 @@ function LoginWrapper({ children }: any) {
     }
   };
 
-  const handleFileChange = async (fieldName: any, value: any) => {
+  const handleFileChange = async (fieldName, value) => {
     let formData = {};
     const file = value.target.files && value.target.files[0];
 
     if (file) {
       const reader = new FileReader();
 
-      const readPromise = new Promise<any>((resolve) => {
+      const readPromise = new Promise((resolve) => {
         reader.onload = (e) => {
           if (e.target && typeof e.target.result === "string") {
             resolve(e.target.result);
@@ -118,7 +118,7 @@ function LoginWrapper({ children }: any) {
     return formData;
   };
 
-  const handleFieldChange = async (fieldName: any, event: any) => {
+  const handleFieldChange = async (fieldName, event) => {
     let updatedFormData = { ...formData, [fieldName]: event.target.value };
     if (fieldName === "file") {
       let fileFormData = await handleFileChange(fieldName, event);
@@ -133,7 +133,7 @@ function LoginWrapper({ children }: any) {
     }
   };
 
-  const handleFieldBlur = (fieldName: any) => {
+  const handleFieldBlur = (fieldName) => {
     if (fieldName === "file") {
       return;
     }
@@ -143,11 +143,11 @@ function LoginWrapper({ children }: any) {
     setValidationErrors({ ...validationErrors, [fieldName]: errorMessage });
   };
 
-  const handleSubmit = (event: any) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
 
     let hasErrors = false;
-    const updatedValidationErrors: any = {};
+    const updatedValidationErrors = {};
 
     for (const fieldName in formData) {
       const value = formData[fieldName];
@@ -161,7 +161,7 @@ function LoginWrapper({ children }: any) {
 
     setValidationErrors(updatedValidationErrors);
 
-    const updatedTouched: any = {};
+    const updatedTouched = {};
     for (const fieldName in formData) {
       updatedTouched[fieldName] = true;
     }
