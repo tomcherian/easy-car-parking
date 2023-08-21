@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router";
 import "./SignUp.css";
 import React, { useState } from "react";
+import { FeRoutes } from "../../utils/RouteConstants";
 
 function LoginWrapper({ children }) {
   const [formData, setFormData] = useState({
@@ -33,7 +34,7 @@ function LoginWrapper({ children }) {
   const navigate = useNavigate();
 
   const handleSignIn = () => {
-    navigate("/login");
+    navigate(FeRoutes.LOGIN);
   };
 
   const validateEmail = (event) => {
