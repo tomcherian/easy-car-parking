@@ -1,0 +1,75 @@
+.NavBar_main_wrapper {
+  height: 64px;
+}
+
+.NavBar {
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 4px -1px,
+    rgba(0, 0, 0, 0.14) 0px 4px 5px 0px, rgba(0, 0, 0, 0.12) 0px 1px 10px 0px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  position: absolute;
+  top: 0px;
+  left: auto;
+  right: 0px;
+  background-color: rgb(25, 118, 210);
+  color: rgb(255, 255, 255);
+  z-index: 1000;
+  min-height: 64px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.NavBar_container {
+  width: 100%;
+  display: flex;
+}
+
+.NavBar_title {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.NavBar_icon_wrapper {
+  padding: 0 18px;
+}
+
+.NavBar_signout {
+  display: flex;
+  align-items: center;
+  padding: 0 18px;
+}
+
+.NavBar_icon {
+  cursor: pointer;
+}
+
+.NavBar_signout_wrapper {
+  position: relative;
+}
+
+.NavBar_menu_options {
+  position: absolute;
+  right: 0;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 5px -3px,
+    rgba(0, 0, 0, 0.14) 0px 8px 10px 1px, rgba(0, 0, 0, 0.12) 0px 3px 14px 2px;
+  top: calc(100% + 2px);
+  color: grey;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.NavBar_menu_option {
+  padding: 8px;
+  min-width: 120px;
+  cursor: pointer;
+}
+
+.NavBar_menu_option:hover {
+  background-color: #eee;
+}

@@ -1,9 +1,9 @@
 import { useNavigate } from "react-router";
 import "./SignUp.css";
 import React, { useState } from "react";
-import { FeRoutes } from "../../utils/RouteConstants";
+import { AllRoutes } from "../../utils/RouteConstants";
 
-function LoginWrapper({ children }) {
+const SignUp = () => {
   const [formData, setFormData] = useState({
     email: "",
     username: "",
@@ -34,7 +34,7 @@ function LoginWrapper({ children }) {
   const navigate = useNavigate();
 
   const handleSignIn = () => {
-    navigate(FeRoutes.LOGIN);
+    navigate(AllRoutes.LOGIN);
   };
 
   const validateEmail = (event) => {
@@ -176,7 +176,7 @@ function LoginWrapper({ children }) {
   };
 
   return (
-    <div className="SignUp_container">
+    <div className="SignUp_container main_background">
       <div className="SignUp_card">
         <div className="SignUp_sign_up" onClick={handleSignIn}>
           Have an Account ?<br />
@@ -266,6 +266,6 @@ function LoginWrapper({ children }) {
       </div>
     </div>
   );
-}
+};
 
-export default LoginWrapper;
+export default SignUp;

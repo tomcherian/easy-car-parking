@@ -1,9 +1,9 @@
 import React from "react";
 import { useNavigate } from "react-router";
 import "./NotFound.css";
-import { FeRoutes } from "../../utils/RouteConstants";
+import { AllRoutes } from "../../utils/RouteConstants";
 
-function NotFound() {
+const NotFound = () => {
   const navigate = useNavigate();
   return (
     <div className="Not_found_container">
@@ -11,13 +11,13 @@ function NotFound() {
       <button
         className="Not_found_navigate_button"
         onClick={() => {
-          navigate(FeRoutes.LOGIN);
+          navigate(AllRoutes.LOGIN);
         }}
       >
         Navigate to Login screen
       </button>
     </div>
   );
-}
+};
 
 export default NotFound;

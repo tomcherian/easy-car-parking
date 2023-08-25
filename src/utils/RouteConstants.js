@@ -1,14 +1,8 @@
-import Home from "../pages/Home/Home";
-
-export const FeRoutes = {
+export const AllRoutes = {
   LOGIN: "/login",
   SIGN_UP: "/signup",
   HOME: "/",
+  PAYMENTS: "/payments",
+  HISTORY: "/history",
+  PROFILE: "/Profile",
 };
-
-export const ProtectedRoutesData = [
-  {
-    path: FeRoutes.HOME,
-    component: <Home />,
-  },
-];

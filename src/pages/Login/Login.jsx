@@ -1,9 +1,9 @@
 import { useNavigate } from "react-router";
 import "./Login.css";
 import React, { useState } from "react";
-import { FeRoutes } from "../../utils/RouteConstants";
+import { AllRoutes } from "../../utils/RouteConstants";
 
-function Login() {
+const Login = () => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -22,7 +22,7 @@ function Login() {
   const navigate = useNavigate();
 
   const handleSignUp = () => {
-    navigate(FeRoutes.SIGN_UP);
+    navigate(AllRoutes.SIGN_UP);
   };
 
   const validateEmail = (event) => {
@@ -93,10 +93,13 @@ function Login() {
     if (!hasErrors) {
       console.log({ formData });
       // Perform form submission logic
+      localStorage.setItem("access_token", "REPLACE_WITH_REAL_TOKEN");
+      navigate(AllRoutes.HOME);
     }
   };
+
   return (
-    <div className="Login_container">
+    <div className="Login_container main_background">
       <div className="Login_card">
         <div className="Login_sign_up" onClick={handleSignUp}>
           No Account ?<br /> Sign up
@@ -147,6 +150,6 @@ function Login() {
       </div>
     </div>
   );
-}
+};
 
 export default Login;

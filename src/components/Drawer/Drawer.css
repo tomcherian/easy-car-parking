@@ -1,0 +1,28 @@
+.Drawer {
+  color: grey;
+  position: fixed;
+  top: 64px;
+  left: -100%;
+  min-width: 250px;
+  height: 100vh;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 8px 10px -5px,
+    rgba(0, 0, 0, 0.14) 0px 16px 24px 2px, rgba(0, 0, 0, 0.12) 0px 6px 30px 5px;
+  transition: left 0.5s ease;
+}
+
+.Drawer_open {
+  left: 0;
+}
+
+.Drawer_item {
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  gap: 12px;
+}
+
+.Drawer_item:hover {
+  background-color: #eee;
+}
