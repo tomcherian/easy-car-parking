@@ -36,10 +36,9 @@ const BasicTable = ({ data }) => {
       <Table aria-label="simple table">
         <TableHead>
           <StyledTableRow>
-            {data.headers.map((header) => {
-              console.log({ header });
+            {data.headers.map((header, index) => {
               return (
-                <StyledTableCell align={header.align || "left"}>
+                <StyledTableCell align={header.align || "left"} key={index}>
                   {header.title}
                 </StyledTableCell>
               );
@@ -47,13 +46,17 @@ const BasicTable = ({ data }) => {
           </StyledTableRow>
         </TableHead>
         <TableBody>
-          {data.rowData.map((row) => (
+          {data.rowData.map((row, index) => (
             <StyledTableRow
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+              key={index}
             >
               {row.map((value, index) => {
                 return (
-                  <StyledTableCell align={data.headers[index].align || "left"}>
+                  <StyledTableCell
+                    align={data.headers[index].align || "left"}
+                    key={index}
+                  >
                     {value}
                   </StyledTableCell>
                 );

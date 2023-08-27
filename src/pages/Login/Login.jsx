@@ -1,7 +1,10 @@
 import { useNavigate } from "react-router";
-import "./Login.css";
 import React, { useState } from "react";
 import { AllRoutes } from "../../utils/RouteConstants";
+import { postLogin } from "./redux/LoginSlice";
+import "./Login.css";
+import { ServiceCalls, setHeaders } from "../../utils/ServiceCalls";
+import { BACKEND_ROUTES } from "../../utils/BackendRoutes";
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -66,7 +69,19 @@ const Login = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
+    console.log("hello")
+    const headers = setHeaders();
+    const accessToken = localStorage.getItem("access_token");
+    Object.assign(headers.headers, {
+      Authorization: `Bearer ${accessToken}`,
+    });
+    const body = {
+      email: "cm@gmail.com",
+      password: "blabla",
+    };
+    const response = ServiceCalls.post(BACKEND_ROUTES.LOGIN, body, headers);
+    console.log("responser fasdfas",response)
+    // postLogin();
     let hasErrors = false;
     const updatedValidationErrors = {};
 
