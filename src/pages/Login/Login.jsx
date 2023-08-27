@@ -120,7 +120,7 @@ const Login = () => {
           No Account ?<br /> Sign up
         </div>
         <div className="Login_welcome_title">
-          Welcome to <span className="Login_welcome_title_green">LOREM</span>
+          Welcome to <span className="Login_welcome_title_green">ParkNow</span>
         </div>
         <div className="Login_sign_in">Sign in</div>
         <div>
