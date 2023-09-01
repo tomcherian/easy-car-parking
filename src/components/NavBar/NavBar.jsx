@@ -1,12 +1,15 @@
 import React, { useState } from "react";
-import "./NavBar.css";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
 import { AccountCircle } from "@mui/icons-material";
 import Drawer from "../Drawer/Drawer";
-import { useNavigate } from "react-router-dom";
 import { AllRoutes } from "../../utils/RouteConstants";
+import { setIsLoggedIn } from "../../pages/Login/redux/LoginSlice";
+import "./NavBar.css";
 
 const NavBar = () => {
+  const dispatch = useDispatch();
   const [showUserMenu, setShowUserMenu] = useState(false);
   const [showDrawer, setShowDrawer] = useState(false);
   const navigate = useNavigate();
@@ -17,7 +20,8 @@ const NavBar = () => {
 
   const handleSignout = () => {
     setShowUserMenu(false);
-    localStorage.removeItem("access_token");
+    dispatch(setIsLoggedIn(false));
+    sessionStorage.removeItem("access_token");
     navigate(AllRoutes.LOGIN);
   };
 

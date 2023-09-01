@@ -178,7 +178,6 @@ const ProfileUpdate = ({ showProfileInfo, setShowProfileInfo }) => {
     setTouchedFields(updatedTouched);
 
     if (!hasErrors) {
-      console.log({ formData });
       // Perform form submission logic
       setShowProfileInfo(true);
     }

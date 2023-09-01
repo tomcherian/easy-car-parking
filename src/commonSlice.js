@@ -13,5 +13,5 @@ export const commonSlice = createSlice({
 });
 
 export const { isLoading } = commonSlice.actions;
-export const commonStore = (state) => state.common.value;
+export const commonStore = (state) => state.common;
 export default commonSlice.reducer;
