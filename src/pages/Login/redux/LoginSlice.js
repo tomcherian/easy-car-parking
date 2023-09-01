@@ -2,14 +2,18 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { ServiceCalls } from "../../../utils/ServiceCalls";
 import { BACKEND_ROUTES } from "../../../utils/BackendRoutes";
 
-export const postLogin = createAsyncThunk("postLogin", async (body) => {
-  try {
-    const response = await ServiceCalls.post(BACKEND_ROUTES.LOGIN, body);
-    sessionStorage.setItem("access_token", response?.data?.token);
-  } catch (error) {
-    console.log("console ", error);
+export const postLogin = createAsyncThunk(
+  "postLogin",
+  async (body, { rejectWithValue }) => {
+    try {
+      const response = await ServiceCalls.post(BACKEND_ROUTES.LOGIN, body);
+      sessionStorage.setItem("access_token", response?.data?.token);
+    } catch (error) {
+      console.log("console ", error);
+      return rejectWithValue();
+    }
   }
-});
+);
 
 export const loginSlice = createSlice({
   name: "login",

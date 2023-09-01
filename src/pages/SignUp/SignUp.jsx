@@ -1,12 +1,18 @@
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
-import "./SignUp.css";
-import React, { useState } from "react";
 import { AllRoutes } from "../../utils/RouteConstants";
+import { postSignUp, signupStore } from "./redux/SignupSlice";
+import "./SignUp.css";
+import Loader from "../../components/Loader/Loader";
 
 const SignUp = () => {
+  const dispatch = useDispatch();
+  const { isLoading, isSignUpSuccess, isSignUpError } =
+    useSelector(signupStore);
   const [formData, setFormData] = useState({
     email: "",
-    username: "",
+    name: "",
     password: "",
     carNumber: "",
     file: {
@@ -17,7 +23,7 @@ const SignUp = () => {
 
   const [validationErrors, setValidationErrors] = useState({
     email: "",
-    username: "",
+    name: "",
     password: "",
     carNumber: "",
     file: "",
@@ -25,11 +31,17 @@ const SignUp = () => {
 
   const [touchedFields, setTouchedFields] = useState({
     email: false,
-    username: false,
+    name: false,
     password: false,
     carNumber: false,
     file: false,
   });
+
+  useEffect(() => {
+    if (isSignUpSuccess) {
+      navigate(AllRoutes.LOGIN);
+    }
+  }, [isSignUpSuccess]);
 
   const navigate = useNavigate();
 
@@ -43,7 +55,7 @@ const SignUp = () => {
   };
 
   const validateUsername = (event) => {
-    if (!event.target.value) return "Username is required.";
+    if (!event.target.value) return "Name is required.";
     return "";
   };
 
@@ -72,7 +84,7 @@ const SignUp = () => {
     switch (fieldName) {
       case "email":
         return validateEmail(event);
-      case "username":
+      case "name":
         return validateUsername(event);
       case "password":
         return validatePassword(event);
@@ -146,8 +158,16 @@ const SignUp = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
-    let hasErrors = false;
+    const apiBody = {
+      name: formData.name,
+      email: formData.email,
+      contactNumber: 0,
+      password: formData.password,
+      carNumber: formData.carNumber,
+      imageS3Link: "string",
+    };
+    dispatch(postSignUp(apiBody));
+    // let hasErrors = false;
     const updatedValidationErrors = {};
 
     for (const fieldName in formData) {
@@ -155,9 +175,9 @@ const SignUp = () => {
       const errorMessage = validateField(fieldName, { target: { value } });
       updatedValidationErrors[fieldName] = errorMessage;
 
-      if (errorMessage) {
-        hasErrors = true;
-      }
+      // if (errorMessage) {
+      //   hasErrors = true;
+      // }
     }
 
     setValidationErrors(updatedValidationErrors);
@@ -169,10 +189,14 @@ const SignUp = () => {
 
     setTouchedFields(updatedTouched);
 
-    if (!hasErrors) {
-      // Perform form submission logic
-    }
+    // if (!hasErrors) {
+    //   // Perform form submission logic
+    // }
   };
+
+  if (isLoading) {
+    return <Loader />;
+  }
 
   return (
     <div className="SignUp_container main_background">
@@ -200,17 +224,15 @@ const SignUp = () => {
               )}
             </div>
             <div className="SignUp_field">
-              <div className="SignUp_label">Enter your Username</div>
+              <div className="SignUp_label">Enter your Name</div>
               <input
                 className="SignUp_input"
-                value={formData.username}
-                onChange={(e) => handleFieldChange("username", e)}
-                onBlur={() => handleFieldBlur("username")}
+                value={formData.name}
+                onChange={(e) => handleFieldChange("name", e)}
+                onBlur={() => handleFieldBlur("name")}
               />
-              {validationErrors.username && (
-                <div className="invalid-feedback">
-                  {validationErrors.username}
-                </div>
+              {validationErrors.name && (
+                <div className="invalid-feedback">{validationErrors.name}</div>
               )}
             </div>
             <div className="SignUp_field">
