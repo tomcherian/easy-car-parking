@@ -170,7 +170,6 @@ const SignUp = () => {
     setTouchedFields(updatedTouched);
 
     if (!hasErrors) {
-      console.log({ formData });
       // Perform form submission logic
     }
   };

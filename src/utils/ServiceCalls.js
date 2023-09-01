@@ -14,12 +14,10 @@ export class ServiceCalls {
   }
 
   static post(api, body, headers, params) {
-    console.log("post data", api, body, headers);
     const URL = SERVICE_URL + api;
-    console.log("url", URL);
     return new Promise((resolve, reject) => {
       axios
-        .post(URL, body, { headers: headers.headers, params })
+        .post(URL, body, { headers: headers?.headers, params })
         .then((data) => resolve(data))
         .catch((error) => reject(error));
     });

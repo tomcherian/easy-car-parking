@@ -1,12 +1,16 @@
+import { toast } from "react-toastify";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
-import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { AllRoutes } from "../../utils/RouteConstants";
-import { postLogin } from "./redux/LoginSlice";
+import { loginStore, postLogin } from "./redux/LoginSlice";
+import Loader from "../../components/Loader/Loader";
 import "./Login.css";
-import { ServiceCalls, setHeaders } from "../../utils/ServiceCalls";
-import { BACKEND_ROUTES } from "../../utils/BackendRoutes";
 
 const Login = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { isLoggedIn, isLoading, isLoginError } = useSelector(loginStore);
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -22,7 +26,21 @@ const Login = () => {
     password: false,
   });
 
-  const navigate = useNavigate();
+  useEffect(() => {
+    if (isLoggedIn) {
+      navigate(AllRoutes.HOME);
+    }
+  }, [isLoggedIn]);
+
+  useEffect(() => {
+    if (isLoginError) {
+      toast.error("Login error!", {
+        position: toast.POSITION.TOP_RIGHT,
+        autoClose: 3000,
+        hideProgressBar: false,
+      });
+    }
+  }, [isLoginError]);
 
   const handleSignUp = () => {
     navigate(AllRoutes.SIGN_UP);
@@ -69,20 +87,7 @@ const Login = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("hello")
-    const headers = setHeaders();
-    const accessToken = localStorage.getItem("access_token");
-    Object.assign(headers.headers, {
-      Authorization: `Bearer ${accessToken}`,
-    });
-    const body = {
-      email: "cm@gmail.com",
-      password: "blabla",
-    };
-    const response = ServiceCalls.post(BACKEND_ROUTES.LOGIN, body, headers);
-    console.log("responser fasdfas",response)
-    // postLogin();
-    let hasErrors = false;
+    dispatch(postLogin(formData));
     const updatedValidationErrors = {};
 
     for (const fieldName in formData) {
@@ -90,10 +95,6 @@ const Login = () => {
 
       const errorMessage = validateField(fieldName, { target: { value } });
       updatedValidationErrors[fieldName] = errorMessage;
-
-      if (errorMessage) {
-        hasErrors = true;
-      }
     }
 
     setValidationErrors(updatedValidationErrors);
@@ -104,14 +105,12 @@ const Login = () => {
     }
 
     setTouchedFields(updatedTouched);
-
-    if (!hasErrors) {
-      console.log({ formData });
-      // Perform form submission logic
-      localStorage.setItem("access_token", "REPLACE_WITH_REAL_TOKEN");
-      navigate(AllRoutes.HOME);
-    }
   };
+
+  if (isLoading) {
+    console.log("isloading", isLoading);
+    return <Loader />;
+  }
 
   return (
     <div className="Login_container main_background">

@@ -21,6 +21,7 @@
   align-items: center;
   padding: 0 16px;
   gap: 12px;
+  cursor: pointer;
 }
 
 .Drawer_item:hover {
