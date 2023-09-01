@@ -5,6 +5,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { AllRoutes } from "../../utils/RouteConstants";
 import { loginStore, postLogin } from "./redux/LoginSlice";
 import Loader from "../../components/Loader/Loader";
+import EyeLock from "../../assets/images/EyeLock.png";
+import EyeOpen from "../../assets/images/EyeOpen.png";
 import "./Login.css";
 
 const Login = () => {
@@ -15,6 +17,7 @@ const Login = () => {
     email: "",
     password: "",
   });
+  const [hidePassword, setHidePassword] = useState(true);
 
   const [validationErrors, setValidationErrors] = useState({
     email: "",
@@ -112,6 +115,12 @@ const Login = () => {
     return <Loader />;
   }
 
+  const togglePassword = () => {
+    setHidePassword((prevState) => {
+      return !prevState;
+    });
+  };
+
   return (
     <div className="Login_container main_background">
       <div className="Login_card">
@@ -140,13 +149,36 @@ const Login = () => {
             </div>
             <div>
               <div className="Login_label">Enter your Password</div>
-              <input
-                className="Login_input"
-                name="password"
-                value={formData.password}
-                onChange={(e) => handleFieldChange("password", e)}
-                onBlur={() => handleFieldBlur("password")}
-              />
+              <div className="Password_wrapper">
+                <input
+                  className="Login_input"
+                  type={hidePassword ? "password" : "text"}
+                  name="password"
+                  value={formData.password}
+                  onChange={(e) => handleFieldChange("password", e)}
+                  onBlur={() => handleFieldBlur("password")}
+                />
+                {hidePassword && (
+                  <img
+                    className="Eye_lock"
+                    src={EyeLock}
+                    alt="Eye lock"
+                    height={40}
+                    width={40}
+                    onClick={togglePassword}
+                  />
+                )}
+                {!hidePassword && (
+                  <img
+                    className="Eye_lock"
+                    src={EyeOpen}
+                    alt="Eye lock"
+                    height={40}
+                    width={40}
+                    onClick={togglePassword}
+                  />
+                )}
+              </div>
               {validationErrors.password && (
                 <div className="invalid-feedback">
                   {validationErrors.password}
