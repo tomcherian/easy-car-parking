@@ -8,7 +8,7 @@ import TableRow from "@mui/material/TableRow";
 import { styled } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
 
-const BasicTable = ({ data }) => {
+const BasicTable = ({ data, rowData }) => {
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
       backgroundColor: data.headerBgColor || "",
@@ -46,7 +46,7 @@ const BasicTable = ({ data }) => {
           </StyledTableRow>
         </TableHead>
         <TableBody>
-          {data.rowData.map((row, index) => (
+          {rowData.map((row, index) => (
             <StyledTableRow
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
               key={index}

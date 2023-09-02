@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
 import { AccountCircle } from "@mui/icons-material";
 import Drawer from "../Drawer/Drawer";
 import { AllRoutes } from "../../utils/RouteConstants";
-import { setIsLoggedIn } from "../../pages/Login/redux/LoginSlice";
+import { loginStore, setIsLoggedIn } from "../../pages/Login/redux/LoginSlice";
 import "./NavBar.css";
 
 const NavBar = () => {
@@ -14,6 +14,8 @@ const NavBar = () => {
   const [showDrawer, setShowDrawer] = useState(false);
   const navigate = useNavigate();
 
+  const { userData } = useSelector(loginStore);
+
   const handleProfile = () => {
     setShowUserMenu(false);
   };
@@ -21,7 +23,7 @@ const NavBar = () => {
   const handleSignout = () => {
     setShowUserMenu(false);
     dispatch(setIsLoggedIn(false));
-    sessionStorage.removeItem("access_token");
+    sessionStorage.clear();
     navigate(AllRoutes.LOGIN);
   };
 
@@ -41,6 +43,7 @@ const NavBar = () => {
           <div className="NavBar_title">My App</div>
           <div className="NavBar_signout">
             <span className="NavBar_signout_wrapper">
+              {userData?.name ?? "User"}
               <AccountCircle
                 className="NavBar_icon"
                 onClick={() => {

@@ -1,15 +1,41 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import NavBar from "../../components/NavBar/NavBar";
-import "./Payment.css";
 import PaymentPopUp from "../../components/PaymentPopUp/PaymentPopUp";
 import BasicTable from "../../components/Table/Table";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import AddPaymentPopUp from "../../components/AddPaymentPopup/AddPaymentPopup";
+import { getPaymentList, paymentStore } from "./redux/PaymentSlice";
+import Loader from "../../components/Loader/Loader";
+import "./Payment.css";
+import { dashboardStore, getUsersData } from "../Home/redux/HomeSlice";
+import { getUserData } from "../../utils/commonFunctions";
 
 const Payment = () => {
+  const dispatch = useDispatch();
   const [showPaymentPopUp, setShowPaymentPopUp] = useState(false);
   const [showAddPaymentPopUp, setShowAddPaymentPopUp] = useState(false);
   const [payment, setPayment] = useState(undefined);
+  const [rowData, setRowData] = useState([]);
+  const { isLoading, paymentListData } = useSelector(paymentStore);
+  const { isLoading: dashboardLoading, usersData } =
+    useSelector(dashboardStore);
+
+  useEffect(() => {
+    dispatch(getPaymentList());
+    dispatch(getUsersData());
+  }, []);
+
+  useEffect(() => {
+    const tempRowData = paymentListData?.map((data) => {
+      return [
+        data.payerUserId,
+        getUserData(data.payerUserId, usersData)?.name ?? "User",
+        data?.amount,
+      ];
+    });
+    setRowData(tempRowData);
+  }, [paymentListData]);
 
   const tableData = {
     headerBgColor: "rgb(25, 118, 210)",
@@ -17,16 +43,9 @@ const Payment = () => {
     oddRowBgColor: "",
     evenRowBgColor: "",
     headers: [
-      { title: "S.No" },
+      { title: "User Id" },
       { title: "Person" },
-      { title: "Card Number", align: "right" },
       { title: "Amount", align: "right" },
-    ],
-    rowData: [
-      [1, "Person 1", 1, 100],
-      [2, "Person 2", 2, 200],
-      [3, "Person 3", 3, 300],
-      [4, "Person 4", 4, 400],
     ],
   };
 
@@ -40,12 +59,12 @@ const Payment = () => {
 
   const applyPayment = () => {
     setShowAddPaymentPopUp(false);
-    setPayment(undefined)
-    console.log("payment", payment);
+    setPayment(undefined);
   };
 
   return (
     <>
+      {(isLoading || dashboardLoading) && <Loader />}
       <NavBar />
       <PaymentPopUp
         showPopUp={showPaymentPopUp}
@@ -79,7 +98,7 @@ const Payment = () => {
         </div>
         <div className="Payment_row_2">
           <div className="Payment_table_wrapper">
-            <BasicTable data={tableData} />
+            <BasicTable data={tableData} rowData={rowData} />
           </div>
         </div>
       </div>
