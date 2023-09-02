@@ -1,6 +1,6 @@
 .Payment_row_1 {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 16px;
   justify-items: center;
   margin: 18px;
@@ -28,6 +28,12 @@
 
 .Payment_card_title {
   margin-bottom: 8px;
+}
+.Payment_Add_button{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 }
 
 .Payment_card_value {
