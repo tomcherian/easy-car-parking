@@ -5,11 +5,17 @@ import PaymentPopUp from "../../components/PaymentPopUp/PaymentPopUp";
 import BasicTable from "../../components/Table/Table";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import AddPaymentPopUp from "../../components/AddPaymentPopup/AddPaymentPopup";
-import { getPaymentList, paymentStore } from "./redux/PaymentSlice";
+import {
+  getPaymentList,
+  paymentStore,
+  postPayment,
+} from "./redux/PaymentSlice";
 import Loader from "../../components/Loader/Loader";
 import "./Payment.css";
 import { dashboardStore, getUsersData } from "../Home/redux/HomeSlice";
 import { getUserData } from "../../utils/commonFunctions";
+import moment from "moment/moment";
+import { loginStore } from "../Login/redux/LoginSlice";
 
 const Payment = () => {
   const dispatch = useDispatch();
@@ -17,14 +23,23 @@ const Payment = () => {
   const [showAddPaymentPopUp, setShowAddPaymentPopUp] = useState(false);
   const [payment, setPayment] = useState(undefined);
   const [rowData, setRowData] = useState([]);
-  const { isLoading, paymentListData } = useSelector(paymentStore);
+  const { isLoading, paymentListData, isPaymentAddedSuccess } =
+    useSelector(paymentStore);
   const { isLoading: dashboardLoading, usersData } =
     useSelector(dashboardStore);
+  const { userData } = useSelector(loginStore);
 
   useEffect(() => {
     dispatch(getPaymentList());
     dispatch(getUsersData());
   }, []);
+
+  useEffect(() => {
+    if (isPaymentAddedSuccess) {
+      setShowAddPaymentPopUp(false);
+      setPayment(undefined);
+    }
+  }, [isPaymentAddedSuccess]);
 
   useEffect(() => {
     const tempRowData = paymentListData?.map((data) => {
@@ -58,8 +73,14 @@ const Payment = () => {
   };
 
   const applyPayment = () => {
-    setShowAddPaymentPopUp(false);
-    setPayment(undefined);
+    if (userData?.id || sessionStorage.getItem("userId")) {
+      const paymentBody = {
+        amount: payment,
+        date: moment().format(),
+        payerUserId: userData?.id ?? sessionStorage.getItem("userId"),
+      };
+      dispatch(postPayment(paymentBody));
+    }
   };
 
   return (
