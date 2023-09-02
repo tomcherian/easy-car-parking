@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { ServiceCalls } from "../../../utils/ServiceCalls";
+import { ServiceCalls, setHeaders } from "../../../utils/ServiceCalls";
 import { BACKEND_ROUTES } from "../../../utils/BackendRoutes";
 
 export const postLogin = createAsyncThunk(
@@ -12,6 +12,28 @@ export const postLogin = createAsyncThunk(
       sessionStorage.setItem("userName", response?.data?.user?.name);
       sessionStorage.setItem("userEmail", response?.data?.user?.email);
       return response?.data?.user;
+    } catch (error) {
+      console.log("console ", error);
+      return rejectWithValue();
+    }
+  }
+);
+export const getEachUser = createAsyncThunk(
+  "getEachUser",
+  async (_, { rejectWithValue }) => {
+    try {
+      const headers = setHeaders();
+      const accessToken = sessionStorage.getItem("access_token");
+      const userId = sessionStorage.getItem("userId");
+      Object.assign(headers.headers, {
+        Authorization: `Bearer ${accessToken}`,
+      });
+      const response = await ServiceCalls.get(
+        `${BACKEND_ROUTES.GET_EACH_USER}/${userId}`,
+        headers
+      );
+      console.log("data", response)
+      return response?.data;
     } catch (error) {
       console.log("console ", error);
       return rejectWithValue();
@@ -60,6 +82,18 @@ export const loginSlice = createSlice({
       state.isLoading = false;
       state.isLoggedIn = false;
       state.isLoginError = true;
+    });
+    builder.addCase(getEachUser.pending, (state) => {
+      state.isLoading = true;
+    });
+    builder.addCase(getEachUser.fulfilled, (state, action) => {
+      state.isLoading = false;
+      state.userData = {
+        ...action.payload,
+      };
+    });
+    builder.addCase(getEachUser.rejected, (state) => {
+      state.isLoading = false;
     });
   },
 });

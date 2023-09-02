@@ -25,18 +25,15 @@ export const getPaymentList = createAsyncThunk(
 
 export const postPayment = createAsyncThunk(
   "postPayment",
-  async (body, { rejectWithValue }) => {
+  async (body, { dispatch, rejectWithValue }) => {
     try {
       const headers = setHeaders();
       const accessToken = sessionStorage.getItem("access_token");
       Object.assign(headers.headers, {
         Authorization: `Bearer ${accessToken}`,
       });
-      const response = await ServiceCalls.post(
-        BACKEND_ROUTES.ADD_PAYMENT,
-        body,
-        headers
-      );
+      await ServiceCalls.post(BACKEND_ROUTES.ADD_PAYMENT, body, headers);
+      dispatch(getPaymentList());
     } catch (error) {
       console.log("console ", error);
       return rejectWithValue();
@@ -48,6 +45,7 @@ export const paymentSlice = createSlice({
   name: "payment",
   initialState: {
     isLoading: false,
+    isPaymentAddedSuccess: false,
     paymentListData: [],
   },
   reducers: {
@@ -58,11 +56,14 @@ export const paymentSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(postPayment.pending, (state) => {
       state.isLoading = true;
+      state.isPaymentAddedSuccess = false;
     });
     builder.addCase(postPayment.fulfilled, (state, action) => {
       state.isLoading = false;
+      state.isPaymentAddedSuccess = true;
     });
     builder.addCase(postPayment.rejected, (state) => {
+      state.isPaymentAddedSuccess = false;
       state.isLoading = false;
     });
     builder.addCase(getPaymentList.pending, (state) => {

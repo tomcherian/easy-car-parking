@@ -110,10 +110,6 @@ const Login = () => {
     setTouchedFields(updatedTouched);
   };
 
-  // if (true) {
-  //   return <Loader />;
-  // }
-
   const togglePassword = () => {
     setHidePassword((prevState) => {
       return !prevState;
@@ -193,7 +189,6 @@ const Login = () => {
           </form>
         </div>
       </div>
-      {isLoading && <Loader />}
     </div>
   );
 };

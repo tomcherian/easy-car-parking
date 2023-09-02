@@ -4,4 +4,5 @@ export const BACKEND_ROUTES = {
   ADD_PAYMENT: "/v1/api/Payment",
   GET_PAYMENT: "/v1/api/Payment",
   GET_USERS: "/v1/api/Users",
+  GET_EACH_USER: "/v1/api/Users",
 };

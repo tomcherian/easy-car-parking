@@ -13,21 +13,21 @@ const AddPaymentPopUp = ({
     <PopUp showPopUp={showPopUp} setShowPopUp={setShowPopUp}>
       <div className="Add_payment_wrapper">
         <div className="PaymentPopUp">Add payment here</div>
-        <div class="input-group">
+        <div className="input-group">
           <input
             value={payment}
             onChange={(event) => {
               setPayment(event.target.value);
             }}
             type="number"
-            class="form-control"
+            className="form-control"
             placeholder="Add Payment here"
             aria-label="Recipient's username"
             aria-describedby="basic-addon2"
           />
         </div>
         <button
-          class="btn btn-outline-secondary add-button"
+          className="btn btn-outline-secondary add-button"
           type="button"
           onClick={onAddPayment}
         >
