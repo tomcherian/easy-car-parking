@@ -27,12 +27,7 @@ const Payment = () => {
   }, []);
 
   useEffect(() => {
-    console.log("paymentlist data", paymentListData);
     const tempRowData = paymentListData?.map((data) => {
-      console.log(
-        "getUserData(data.payerUserId, usersData)",
-        getUserData(data.payerUserId, usersData)
-      );
       return [
         data.payerUserId,
         getUserData(data.payerUserId, usersData)?.name ?? "User",
