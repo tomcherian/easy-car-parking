@@ -1,0 +1,34 @@
+.PaymentPopUp{
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: 250px;
+}
+
+.Payment_popup_wrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.Settle_up_list_wrapper {
+    display: flex;
+    justify-content: start;
+    gap: 20px;
+    width: 100%;
+    
+}
+
+.Settle_up_list_user_wrapper {
+    flex: 3;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    background-color: var(--gray);
+    border-radius: 5px;
+}
+
+.Settle_up_button_wrapper{
+    flex: 1;
+}

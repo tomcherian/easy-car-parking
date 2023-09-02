@@ -3,11 +3,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 import { AllRoutes } from "../../utils/RouteConstants";
 import { postSignUp, signupStore } from "./redux/SignupSlice";
-import "./SignUp.css";
 import Loader from "../../components/Loader/Loader";
+import EyeLock from "../../assets/images/EyeLock.png";
+import EyeOpen from "../../assets/images/EyeOpen.png";
+import "./SignUp.css";
 
 const SignUp = () => {
   const dispatch = useDispatch();
+  const [hidePassword, setHidePassword] = useState(true);
   const { isLoading, isSignUpSuccess, isSignUpError } =
     useSelector(signupStore);
   const [formData, setFormData] = useState({
@@ -194,9 +197,11 @@ const SignUp = () => {
     // }
   };
 
-  if (isLoading) {
-    return <Loader />;
-  }
+  const togglePassword = () => {
+    setHidePassword((prevState) => {
+      return !prevState;
+    });
+  };
 
   return (
     <div className="SignUp_container main_background">
@@ -237,12 +242,35 @@ const SignUp = () => {
             </div>
             <div className="SignUp_field">
               <div className="SignUp_label">Enter your Password</div>
-              <input
-                className="SignUp_input"
-                value={formData.password}
-                onChange={(e) => handleFieldChange("password", e)}
-                onBlur={() => handleFieldBlur("password")}
-              />
+              <div className="Password_wrapper">
+                <input
+                  className="SignUp_input"
+                  type={hidePassword ? "password" : "text"}
+                  value={formData.password}
+                  onChange={(e) => handleFieldChange("password", e)}
+                  onBlur={() => handleFieldBlur("password")}
+                />
+                {hidePassword && (
+                  <img
+                    className="Eye_lock"
+                    src={EyeLock}
+                    alt="Eye lock"
+                    height={40}
+                    width={40}
+                    onClick={togglePassword}
+                  />
+                )}
+                {!hidePassword && (
+                  <img
+                    className="Eye_lock"
+                    src={EyeOpen}
+                    alt="Eye lock"
+                    height={40}
+                    width={40}
+                    onClick={togglePassword}
+                  />
+                )}
+              </div>
               {validationErrors.password && (
                 <div className="invalid-feedback">
                   {validationErrors.password}
@@ -285,6 +313,7 @@ const SignUp = () => {
           </form>
         </div>
       </div>
+      {isLoading && <Loader />}
     </div>
   );
 };
