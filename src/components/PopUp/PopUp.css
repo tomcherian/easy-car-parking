@@ -14,9 +14,21 @@
   left: 50%;
   transform: translate(-50%, -50%);
   min-width: 200px;
-  min-height: 200px;
+  /* min-height: 200px; */
   background-color: white;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
   border-radius: 8px;
   z-index: 1000;
+}
+
+.Icon_cross_wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+
+.Icon_cross {
+  cursor: pointer;
+  border-top-right-radius: 8px;
 }

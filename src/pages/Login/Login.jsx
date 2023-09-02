@@ -110,9 +110,9 @@ const Login = () => {
     setTouchedFields(updatedTouched);
   };
 
-  if (isLoading) {
-    return <Loader />;
-  }
+  // if (true) {
+  //   return <Loader />;
+  // }
 
   const togglePassword = () => {
     setHidePassword((prevState) => {
@@ -193,6 +193,7 @@ const Login = () => {
           </form>
         </div>
       </div>
+      {isLoading && <Loader />}
     </div>
   );
 };

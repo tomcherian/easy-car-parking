@@ -1,0 +1,7 @@
+.Loader-wrapper {
+    z-index: 9999999;
+    opacity: 0.5;
+    position: absolute;
+    width: 100vw;
+    background: white;
+}
