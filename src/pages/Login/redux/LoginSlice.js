@@ -8,6 +8,10 @@ export const postLogin = createAsyncThunk(
     try {
       const response = await ServiceCalls.post(BACKEND_ROUTES.LOGIN, body);
       sessionStorage.setItem("access_token", response?.data?.token);
+      sessionStorage.setItem("userId", response?.data?.user?.id);
+      sessionStorage.setItem("userName", response?.data?.user?.name);
+      sessionStorage.setItem("userEmail", response?.data?.user?.email);
+      return response?.data?.user;
     } catch (error) {
       console.log("console ", error);
       return rejectWithValue();
@@ -21,6 +25,17 @@ export const loginSlice = createSlice({
     isLoading: false,
     isLoggedIn: false,
     isLoginError: false,
+    userData: {
+      carNumber: "",
+      contactNumber: undefined,
+      createdDate: "",
+      email: "",
+      id: undefined,
+      imageS3Link: "",
+      name: "",
+      password: "",
+      updatedDate: "",
+    },
   },
   reducers: {
     setIsLoggedIn: (state, action) => {
@@ -37,6 +52,9 @@ export const loginSlice = createSlice({
       state.isLoading = false;
       state.isLoggedIn = true;
       state.isLoginError = false;
+      state.userData = {
+        ...action.payload,
+      };
     });
     builder.addCase(postLogin.rejected, (state) => {
       state.isLoading = false;
