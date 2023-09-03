@@ -28,3 +28,15 @@
   width: 0;
   height: 0;
 }
+
+.Icon_cross_wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+
+.Icon_cross {
+  cursor: pointer;
+  border-top-right-radius: 8px;
+}

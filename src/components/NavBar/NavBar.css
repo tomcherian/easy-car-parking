@@ -49,6 +49,9 @@
 }
 
 .NavBar_signout_wrapper {
+  display: flex;
+  align-items: center;
+  gap: 5px;
   position: relative;
 }
 

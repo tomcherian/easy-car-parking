@@ -8,6 +8,12 @@ import BookPopUp from "../../components/BookPopUp/BookPopUp";
 
 const Home = () => {
   const [showBookNowPopUp, setShowBookNowPopUp] = useState(false);
+  const [rowData, setRowData] = useState([
+    [1, "Person 1", 1],
+    [2, "Person 2", 2],
+    [3, "Person 3", 3],
+    [4, "Person 4", 4],
+  ]);
 
   const tableData = {
     headerBgColor: "rgb(25, 118, 210)",
@@ -18,12 +24,6 @@ const Home = () => {
       { title: "S.No" },
       { title: "Person" },
       { title: "Card Number", align: "right" },
-    ],
-    rowData: [
-      [1, "Person 1", 1],
-      [2, "Person 2", 2],
-      [3, "Person 3", 3],
-      [4, "Person 4", 4],
     ],
   };
 
@@ -45,7 +45,10 @@ const Home = () => {
   return (
     <>
       <NavBar />
-      <BookPopUp showPopUp={showBookNowPopUp} setShowPopUp={setShowBookNowPopUp} />
+      <BookPopUp
+        showPopUp={showBookNowPopUp}
+        setShowPopUp={setShowBookNowPopUp}
+      />
       <div className="Home_wrapper main_background">
         <div className="Home_row_1">
           <div className="Home_card Home_card_1">
@@ -65,7 +68,7 @@ const Home = () => {
         </div>
         <div className="Home_row_2">
           <div className="Home_table_wrapper">
-            <BasicTable data={tableData} />
+            <BasicTable data={tableData} rowData={rowData} />
           </div>
           <div className="Home_chart_wrapper">
             <div className="Home_chart_content">

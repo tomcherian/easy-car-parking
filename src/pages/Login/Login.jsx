@@ -37,7 +37,7 @@ const Login = () => {
 
   useEffect(() => {
     if (isLoginError) {
-      toast.error("Login error!", {
+      toast.error("Login error! Please try again", {
         position: toast.POSITION.TOP_RIGHT,
         autoClose: 3000,
         hideProgressBar: false,
@@ -118,11 +118,6 @@ const Login = () => {
       dispatch(postLogin(formData));
     }
   };
-
-  if (isLoading) {
-    console.log("isloading", isLoading);
-    return <Loader />;
-  }
 
   const togglePassword = () => {
     setHidePassword((prevState) => {
