@@ -29,4 +29,5 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .add-button {
     align-self: flex-end;
+    background-color: var(--primary);
 }

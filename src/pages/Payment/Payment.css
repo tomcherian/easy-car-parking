@@ -29,7 +29,8 @@
 .Payment_card_title {
   margin-bottom: 8px;
 }
-.Payment_Add_button{
+
+.Payment_Add_button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -41,10 +42,14 @@
 }
 
 .Payment_card_1 {
-  background-image: url("../../assets/images/Card2.jpg");
+  background-color: #EE4B2B;
 }
 
 .Payment_card_2 {
+  background-image: url("../../assets/images/Card2.jpg");
+}
+
+.Payment_card_3 {
   background-image: url("../../assets/images/Card3.jpg");
   display: flex;
   flex-direction: column;
@@ -75,4 +80,9 @@
 .Payment_table_wrapper {
   width: 100%;
   padding: 18px;
+}
+
+
+.Payment_table_wrapper .MuiPaper-root {
+  height: 450px;
 }

@@ -7,6 +7,7 @@ import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import AddPaymentPopUp from "../../components/AddPaymentPopup/AddPaymentPopup";
 import {
   getPaymentList,
+  getPaymentSettleUpList,
   paymentStore,
   postPayment,
 } from "./redux/PaymentSlice";
@@ -23,8 +24,13 @@ const Payment = () => {
   const [showAddPaymentPopUp, setShowAddPaymentPopUp] = useState(false);
   const [payment, setPayment] = useState(undefined);
   const [rowData, setRowData] = useState([]);
-  const { isLoading, paymentListData, isPaymentAddedSuccess } =
-    useSelector(paymentStore);
+  const [settleAmount, setSettleAmount] = useState(0);
+  const {
+    isLoading,
+    paymentListData,
+    isPaymentAddedSuccess,
+    paymentSettleUpData,
+  } = useSelector(paymentStore);
   const { isLoading: dashboardLoading, usersData } =
     useSelector(dashboardStore);
   const { userData } = useSelector(loginStore);
@@ -32,6 +38,7 @@ const Payment = () => {
   useEffect(() => {
     dispatch(getPaymentList());
     dispatch(getUsersData());
+    dispatch(getPaymentSettleUpList({ userId: 23 }));
   }, []);
 
   useEffect(() => {
@@ -40,6 +47,13 @@ const Payment = () => {
       setPayment(undefined);
     }
   }, [isPaymentAddedSuccess]);
+
+  useEffect(() => {
+    let settleAmount = 0;
+    if (paymentSettleUpData?.length > 0)
+      paymentSettleUpData.map((data) => (settleAmount += data?.amountToSettle));
+    setSettleAmount(Number(settleAmount.toFixed(2)));
+  }, [paymentSettleUpData]);
 
   useEffect(() => {
     const tempRowData = paymentListData?.map((data) => {
@@ -53,7 +67,7 @@ const Payment = () => {
   }, [paymentListData]);
 
   const tableData = {
-    headerBgColor: "rgb(25, 118, 210)",
+    headerBgColor: "#FED94D",
     headerTextColor: "white",
     oddRowBgColor: "",
     evenRowBgColor: "",
@@ -83,6 +97,10 @@ const Payment = () => {
     }
   };
 
+  const onHandleSettleUp = (settleUp) => {
+
+  }
+
   return (
     <>
       {(isLoading || dashboardLoading) && <Loader />}
@@ -90,6 +108,8 @@ const Payment = () => {
       <PaymentPopUp
         showPopUp={showPaymentPopUp}
         setShowPopUp={setShowPaymentPopUp}
+        settleUpData={paymentSettleUpData}
+        onHandleSettleUp={onHandleSettleUp}
       />
       <AddPaymentPopUp
         showPopUp={showAddPaymentPopUp}
@@ -102,15 +122,15 @@ const Payment = () => {
         <div className="Payment_row_1">
           <div className="Payment_card Payment_card_1">
             <div className="Payment_card_title">Amount To Be Settled</div>
-            <div className="Payment_card_value">100 DHS</div>
+            <div className="Payment_card_value">{settleAmount} DHS</div>
           </div>
           <div
-            className="Payment_card Payment_card_1 Payment_Add_button"
+            className="Payment_card Payment_card_2 Payment_Add_button"
             onClick={handleAddPayment}
           >
             <div>Add payment</div>
           </div>
-          <div className="Payment_card Payment_card_2" onClick={handleSettle}>
+          <div className="Payment_card Payment_card_3" onClick={handleSettle}>
             <div className="Payment_card_add_icon">
               <AddCircleOutlineIcon fontSize="large" />
             </div>
