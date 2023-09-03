@@ -6,6 +6,7 @@ import { AccountCircle } from "@mui/icons-material";
 import Drawer from "../Drawer/Drawer";
 import { AllRoutes } from "../../utils/RouteConstants";
 import { loginStore, setIsLoggedIn } from "../../pages/Login/redux/LoginSlice";
+import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import "./NavBar.css";
 
 const NavBar = () => {
@@ -18,6 +19,11 @@ const NavBar = () => {
 
   const handleProfile = () => {
     setShowUserMenu(false);
+    navigate(AllRoutes.PROFILE);
+  };
+
+  const handleTitleClick = () => {
+    navigate(AllRoutes.HOME);
   };
 
   const handleSignout = () => {
@@ -40,23 +46,29 @@ const NavBar = () => {
             />
             <Drawer showDrawer={showDrawer} />
           </div>
-          <div className="NavBar_title">My App</div>
+          <div className="NavBar_title" onClick={handleTitleClick}>
+            ParkNow
+          </div>
           <div className="NavBar_signout">
             <span className="NavBar_signout_wrapper">
               {userData?.name ?? "User"}
-              <AccountCircle
-                className="NavBar_icon"
+              <div
+                className="NavBar_logo"
                 onClick={() => {
                   setShowUserMenu((value) => !value);
                 }}
-              />
+              >
+                {userData.name.split(" ").slice(0, 1)}
+              </div>
+              {/* */}
               {showUserMenu && (
                 <div className="NavBar_menu_options">
                   <div className="NavBar_menu_option" onClick={handleProfile}>
+                    <AccountCircle />
                     Profile
                   </div>
                   <div className="NavBar_menu_option" onClick={handleSignout}>
-                    Signout
+                    <ExitToAppIcon /> Signout
                   </div>
                 </div>
               )}

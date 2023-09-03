@@ -169,8 +169,8 @@ const SignUp = () => {
       carNumber: formData.carNumber,
       imageS3Link: "string",
     };
-    dispatch(postSignUp(apiBody));
-    // let hasErrors = false;
+
+    let hasErrors = false;
     const updatedValidationErrors = {};
 
     for (const fieldName in formData) {
@@ -178,9 +178,9 @@ const SignUp = () => {
       const errorMessage = validateField(fieldName, { target: { value } });
       updatedValidationErrors[fieldName] = errorMessage;
 
-      // if (errorMessage) {
-      //   hasErrors = true;
-      // }
+      if (errorMessage) {
+        hasErrors = true;
+      }
     }
 
     setValidationErrors(updatedValidationErrors);
@@ -192,9 +192,10 @@ const SignUp = () => {
 
     setTouchedFields(updatedTouched);
 
-    // if (!hasErrors) {
-    //   // Perform form submission logic
-    // }
+    if (!hasErrors) {
+      // Perform form submission logic
+      dispatch(postSignUp(apiBody));
+    }
   };
 
   const togglePassword = () => {
@@ -211,7 +212,7 @@ const SignUp = () => {
           Sign in
         </div>
         <div className="SignUp_welcome_title">
-          Welcome to <span className="SignUp_welcome_title_green">LOREM</span>
+          Welcome to <span className="SignUp_welcome_title_green">ParkNow</span>
         </div>
         <div className="SignUp_sign_in">Sign up</div>
         <div>

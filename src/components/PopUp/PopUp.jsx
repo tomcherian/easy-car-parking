@@ -6,9 +6,11 @@ const PopUp = ({
   children = <></>,
   showPopUp = false,
   setShowPopUp = () => {},
+  onClose = () => {},
 }) => {
   const handleOutsideClick = () => {
     setShowPopUp(false);
+    onClose();
   };
 
   const handleInsideClick = (e) => {
@@ -22,17 +24,16 @@ const PopUp = ({
   return (
     <div className="PopUp" onClick={handleOutsideClick}>
       <div className="PopUp_content" onClick={handleInsideClick}>
-        <div className="Icon_cross_wrapper">
-          <img
-            onClick={() => {
-              setShowPopUp(false);
-            }}
-            src={IconCross}
-            className="Icon_cross"
-            alt="Cross Icon"
-            height={20}
-            width={20}
-          />
+        <div className="Icon_wrapper">
+          <div className="Icon_cross_wrapper" onClick={handleOutsideClick}>
+            <img
+              src={IconCross}
+              className="Icon_cross"
+              alt="Cross Icon"
+              height={20}
+              width={20}
+            />
+          </div>
         </div>
         {children}
       </div>
