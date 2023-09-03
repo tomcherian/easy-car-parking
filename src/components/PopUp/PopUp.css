@@ -14,7 +14,6 @@
   left: 50%;
   transform: translate(-50%, -50%);
   min-width: 400px;
-  min-height: 200px;
   background-color: white;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
   border-radius: 8px;
@@ -29,11 +28,16 @@
   height: 0;
 }
 
+.Icon_wrapper {
+  position: relative;
+}
+
 .Icon_cross_wrapper {
-  width: 100%;
-  display: flex;
-  justify-content: end;
-  align-items: center;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  border-radius: 100px;
+  overflow: hidden;
 }
 
 .Icon_cross {

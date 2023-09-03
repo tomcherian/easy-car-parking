@@ -1,24 +1,41 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./FinalizeAvailability.css";
 import { MobileTimePicker } from "@mui/x-date-pickers";
 import dayjs from "dayjs";
 import _ from "lodash";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { bookParking, resetBookingData } from "../redux/BookPopUpSlice";
 
-function isEndTimeBeforeStartTime(startTime, endTime) {
-  const startTimeObj = dayjs(startTime);
-  const endTimeObj = dayjs(endTime);
-  console.log(startTime, endTime);
-  return endTimeObj.isBefore(startTimeObj);
-}
-
-const FinalizeAvailability = ({ finalSlots, setSection }) => {
+const FinalizeAvailability = ({ finalSlots, setSection, setShowPopUp }) => {
   const dispatch = useDispatch();
   const [slots, setSlots] = useState(_.cloneDeep(finalSlots));
+  const userId = useSelector((state) => state?.login?.userData?.id);
+  const bookingData = useSelector(
+    (state) => state?.bookPopUpSlice?.bookingData
+  );
+
+  useEffect(() => {
+    if (bookingData) {
+      setShowPopUp(false);
+      setSection(1);
+    }
+  }, [bookingData]);
 
   const handleBook = () => {
-    setSection(1);
+    const data = slots.map((slot) => {
+      return {
+        userId: userId,
+        time: new Date().toISOString(),
+        startDate: dayjs(slot.startDate).format("YYYY-MM-DDTHH:mm:ss") + "Z",
+        endDate: dayjs(slot.endDate).format("YYYY-MM-DDTHH:mm:ss") + "Z",
+        parkedLocation: "",
+        cardId: slot.cardNumber,
+      };
+    });
+    console.log({ data });
+    dispatch(bookParking(data));
   };
+
   return (
     <div className="FinalizeAvailability_wrapper">
       <div className="FinalizeAvailability_heading">Finalize Slots</div>
@@ -27,7 +44,7 @@ const FinalizeAvailability = ({ finalSlots, setSection }) => {
           return (
             <div className="FinalizeAvailability_slot_wrapper">
               <div className="FinalizeAvailability_slot_date">
-                {slot.startDate.slice(0, 10)}
+                {dayjs(slot.startDate).format("YYYY-MM-DD")}
               </div>
               <div className="FinalizeAvailability_time_range">
                 <MobileTimePicker
@@ -35,10 +52,13 @@ const FinalizeAvailability = ({ finalSlots, setSection }) => {
                   orientation="landscape"
                   value={dayjs(slot.startDate)}
                   minTime={dayjs(finalSlots[index].startDate)}
-                  maxTime={dayjs(finalSlots[index].endDate)}
+                  maxTime={dayjs(slots[index].endDate).subtract(1, "minute")}
                   onChange={(newValue) => {
                     setSlots((prevSlots) => {
-                      prevSlots[index].startDate = newValue.toISOString();
+                      prevSlots[index].startDate = newValue;
+                      if (newValue.isAfter(dayjs(prevSlots[index].endDate))) {
+                        prevSlots[index].endDate = newValue;
+                      }
                       return [...prevSlots];
                     });
                   }}
@@ -48,19 +68,15 @@ const FinalizeAvailability = ({ finalSlots, setSection }) => {
                   ampm={false}
                   orientation="landscape"
                   value={dayjs(slot.endDate)}
-                  minTime={dayjs(finalSlots[index].startDate)}
+                  minTime={dayjs(slots[index].startDate).add(1, "minute")}
                   maxTime={dayjs(finalSlots[index].endDate)}
                   onChange={(newValue) => {
                     setSlots((prevSlots) => {
-                      prevSlots[index].endDate = newValue.toISOString();
+                      prevSlots[index].endDate = newValue;
                       if (
-                        isEndTimeBeforeStartTime(
-                          prevSlots[index].startDate,
-                          newValue
-                        )
+                        newValue.isBefore(dayjs(prevSlots[index].startDate))
                       ) {
-                        console.log("here");
-                        prevSlots[index].startDate = newValue.toISOString();
+                        prevSlots[index].startDate = newValue;
                       }
                       console.log(prevSlots);
                       return [...prevSlots];

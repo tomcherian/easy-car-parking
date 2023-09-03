@@ -1,103 +1,76 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./CheckAvailability.css";
-import { DatePicker, MobileTimePicker } from "@mui/x-date-pickers";
+import { DatePicker } from "@mui/x-date-pickers";
 import { useDispatch } from "react-redux";
-import {
-  getBookingAvailability,
-  resetBookingAvailability,
-} from "../redux/BookPopUpSlice";
+import { getBookingAvailability } from "../redux/BookPopUpSlice";
 import dayjs from "dayjs";
 
-function isDateInPast(dateString) {
-  const date = dayjs(dateString);
-  const currentDate = dayjs();
-  return date.isBefore(currentDate);
+function isEndDateBeforeStartDate(startDate, endDate) {
+  return endDate.isBefore(startDate);
 }
 
-function isEndDateBeforeOrEqualStartDate(startDate, endDate) {
-  const startDateObj = dayjs(startDate);
-  const endDateObj = dayjs(endDate);
-  return endDateObj.isBefore(startDateObj) || endDateObj.isSame(startDateObj);
-}
+const formatDateWithoutTimeZone = (date) => {
+  if (!date) {
+    return "";
+  }
+  return new Date(date.format("YYYY-MM-DD")).toISOString();
+};
 
 const CheckAvailability = ({ setSection }) => {
   const dispatch = useDispatch();
   const [singleDaySelected, setSingleDaySelected] = useState(false);
   const [startDate, setStartDate] = useState(dayjs("2023-09-04"));
-  const [startTime, setStartTime] = useState(
-    dayjs().hour(1).minute(0).second(0)
-  );
   const [endDate, setEndDate] = useState(dayjs("2023-09-10"));
-  const [endTime, setEndTime] = useState(dayjs().hour(23).minute(0).second(0));
   // const [singleDaySelected, setSingleDaySelected] = useState(true);
   // const [startDate, setStartDate] = useState(null);
-  // const [startTime, setStartTime] = useState(null);
   // const [endDate, setEndDate] = useState(null);
-  // const [endTime, setEndTime] = useState(null);
   const [startError, setStartError] = useState("");
   const [endError, setEndError] = useState("");
   const [touched, setTouched] = useState(false);
 
   const resetForm = () => {
     setStartDate(null);
-    setStartTime(null);
     setEndDate(null);
-    setEndTime(null);
     setTouched(false);
     setStartError("");
     setEndError("");
   };
 
-  const validateStartDateTime = (startDate, startTime) => {
+  const validateStartDate = (startDate) => {
     let newStartError = "";
-    if (!startDate || !startTime) {
-      newStartError = "Start Date & Time is required";
-    } else {
-      const startDateTime = formatDateAndTime(startDate, startTime);
-      if (isDateInPast(startDateTime)) {
-        newStartError = "Start Date & Time should not be in the past";
-      }
+    if (!startDate) {
+      newStartError = "Start Date is required";
     }
     setStartError(newStartError);
     return !newStartError;
   };
 
-  const validateEndDateTime = (endDate, endTime) => {
+  const validateEndDate = (endDate) => {
     let newEndError = "";
-    if (!endDate || !endTime) {
-      newEndError = "End Date & Time is required";
+    if (!endDate) {
+      newEndError = "End Date is required";
     } else {
-      const startDateTime = formatDateAndTime(startDate, startTime);
-      const endDateTime = formatDateAndTime(endDate, endTime);
-      if (isEndDateBeforeOrEqualStartDate(startDateTime, endDateTime)) {
-        newEndError =
-          "End Date & Time should not be less than or equal to Start Date & Time";
+      if (isEndDateBeforeStartDate(startDate, endDate)) {
+        newEndError = "End Date should not be less than Start Date ";
       }
     }
     setEndError(newEndError);
     return !newEndError;
   };
 
-  const formatDateAndTime = (date, time) => {
-    if (!date || !time) {
-      return "";
-    }
-    return date.format("YYYY-MM-DD") + time.toISOString().slice(10);
-  };
-
   const handleShowAvailability = () => {
     setTouched(true);
-    const startValidation = validateStartDateTime(startDate, startTime);
-    const endValidation = validateEndDateTime(endDate, endTime);
+    const startValidation = validateStartDate(startDate);
+    const endValidation = validateEndDate(endDate);
     if (!(startValidation && endValidation)) {
       return;
     }
-    const startDateTime = formatDateAndTime(startDate, startTime);
-    const endDateTime = formatDateAndTime(endDate, endTime);
+    const startDateTime = formatDateWithoutTimeZone(startDate);
+    const endDateTime = formatDateWithoutTimeZone(endDate);
     dispatch(
       getBookingAvailability({
-        startDateTime,
-        endDateTime,
+        startDateTime: startDateTime,
+        endDateTime: endDateTime,
       })
     );
     setSection(2);
@@ -134,27 +107,18 @@ const CheckAvailability = ({ setSection }) => {
 
       <div>
         <div className="CheckAvailability_field_wrapper">
-          <div className="CheckAvailability_label">Start Date & Time</div>
+          <div className="CheckAvailability_label">Start Date</div>
           <div className="CheckAvailability_date_time_wrapper">
             <DatePicker
+              disablePast={true}
               value={startDate}
               onChange={(newValue) => {
                 setStartDate(newValue);
                 if (touched) {
-                  validateStartDateTime(newValue, startTime);
+                  validateStartDate(newValue);
                 }
                 if (singleDaySelected) {
                   setEndDate(newValue);
-                }
-              }}
-            />
-            <MobileTimePicker
-              orientation="landscape"
-              value={startTime}
-              onChange={(newValue) => {
-                setStartTime(newValue);
-                if (touched) {
-                  validateStartDateTime(startDate, newValue);
                 }
               }}
             />
@@ -162,25 +126,16 @@ const CheckAvailability = ({ setSection }) => {
           <div className="invalid-feedback">{startError}</div>
         </div>
         <div className="CheckAvailability_field_wrapper">
-          <div className="CheckAvailability_label">End Date & Time</div>
+          <div className="CheckAvailability_label">End Date</div>
           <div className="CheckAvailability_date_time_wrapper">
             <DatePicker
+              disablePast={true}
               disabled={singleDaySelected}
               value={singleDaySelected ? startDate : endDate}
               onChange={(newValue) => {
                 setEndDate(newValue);
                 if (touched) {
-                  validateEndDateTime(newValue, endTime);
-                }
-              }}
-            />
-            <MobileTimePicker
-              orientation="landscape"
-              value={endTime}
-              onChange={(newValue) => {
-                setEndTime(newValue);
-                if (touched) {
-                  validateEndDateTime(endDate, newValue);
+                  validateEndDate(newValue);
                 }
               }}
             />

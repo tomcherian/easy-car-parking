@@ -189,7 +189,6 @@ const Login = () => {
                 </div>
               )}
             </div>
-            <div className="Login_forgot_password">Forgot Password</div>
             <div className="Login_button_wrapper">
               <button type="submit" className="Login_button">
                 Sign in

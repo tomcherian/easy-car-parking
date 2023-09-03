@@ -43,11 +43,13 @@ export const BookPopUpSlice = createSlice({
   initialState: {
     isLoading: false,
     data: null,
+    bookingData: null,
   },
   reducers: {
-    // resetBookingAvailability: (state) => {
-    //   state.data = null;
-    // },
+    resetBookingData: (state) => {
+      state.data = null;
+      state.bookingData = null;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(getBookingAvailability.pending, (state) => {
@@ -61,9 +63,20 @@ export const BookPopUpSlice = createSlice({
       state.isLoading = false;
       state.data = action.payload;
     });
+    builder.addCase(bookParking.pending, (state) => {
+      state.isLoading = true;
+    });
+    builder.addCase(bookParking.fulfilled, (state, action) => {
+      state.isLoading = false;
+      state.bookingData = action.payload;
+    });
+    builder.addCase(bookParking.rejected, (state, action) => {
+      state.isLoading = false;
+      state.bookingData = action.payload;
+    });
   },
 });
 
-// export const { resetBookingAvailability } = getBookingAvailabilitySlice.actions;
+export const { resetBookingData } = BookPopUpSlice.actions;
 // export const loginStore = (state) => state.login;
 export default BookPopUpSlice.reducer;

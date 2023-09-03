@@ -69,3 +69,15 @@
 .ShowAvailability_button_disabled {
   background-color: #ffc87d;
 }
+
+.ShowAvailability_description {
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 1.75;
+  letter-spacing: 0.02857em;
+  text-transform: uppercase;
+  background-color: rgb(255, 255, 255);
+  padding: 8px 8px 8px 0px;
+  text-align: center;
+}

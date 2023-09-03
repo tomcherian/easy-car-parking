@@ -47,16 +47,16 @@ const ShowAvailability = ({ setSection, setFinalSlots }) => {
               });
               if (insert) {
                 data[day].push({
-                  startDate: finalSlot.startDate,
-                  endDate: finalSlot.endDate,
+                  startDate: finalSlot.startDate.replace("Z", ""),
+                  endDate: finalSlot.endDate.replace("Z", ""),
                   cardNumber,
                 });
               }
             } else {
               data[day] = [
                 {
-                  startDate: finalSlot.startDate,
-                  endDate: finalSlot.endDate,
+                  startDate: finalSlot.startDate.replace("Z", ""),
+                  endDate: finalSlot.endDate.replace("Z", ""),
                   cardNumber,
                 },
               ];
@@ -94,6 +94,16 @@ const ShowAvailability = ({ setSection, setFinalSlots }) => {
     setFinalSlots(selectedSlots);
     setSection(3);
   };
+  if (Object.keys(availableSlots).length === 0) {
+    return (
+      <div className="ShowAvailability_wrapper">
+        <div className="ShowAvailability_heading ">Available Slots</div>
+        <div className="ShowAvailability_description">
+          Sorry! No Slots Available
+        </div>
+      </div>
+    );
+  }
 
   console.log({ availableSlots, selectedSlots });
   return (
