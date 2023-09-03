@@ -42,7 +42,7 @@
 }
 
 .Payment_card_1 {
-  background-color: #EE4B2B;
+  background-image: url("../../assets/images/Card2.jpg");
 }
 
 .Payment_card_2 {
@@ -81,7 +81,6 @@
   width: 100%;
   padding: 18px;
 }
-
 
 .Payment_table_wrapper .MuiPaper-root {
   height: 450px;

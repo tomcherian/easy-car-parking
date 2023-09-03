@@ -1,19 +1,35 @@
-import React, { useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import NavBar from "../../components/NavBar/NavBar";
 import "./Home.css";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import BasicTable from "../../components/Table/Table";
 import BarChart from "../../components/BarChart/BarChart";
 import BookPopUp from "../../components/BookPopUp/BookPopUp";
+import { useDispatch, useSelector } from "react-redux";
+import { bookedParkingCard } from "./redux/HomeSlice";
 
 const Home = () => {
+  const dispatch = useDispatch();
+  const bookedParkingCardData = useSelector(
+    (state) => state?.dashboard?.bookedParkingCard
+  );
   const [showBookNowPopUp, setShowBookNowPopUp] = useState(false);
-  const [rowData, setRowData] = useState([
-    [1, "Person 1", 1],
-    [2, "Person 2", 2],
-    [3, "Person 3", 3],
-    [4, "Person 4", 4],
-  ]);
+  const rowData = useMemo(() => {
+    let res = [];
+    if (bookedParkingCardData) {
+      bookedParkingCardData.forEach((cardInfo, index) => {
+        res.push([index, `User ${cardInfo.userId}`, cardInfo.cardId]);
+      });
+    } else {
+      res = [
+        [1, "Person 1", 1],
+        [2, "Person 2", 2],
+        [3, "Person 3", 3],
+        [4, "Person 4", 4],
+      ];
+    }
+    return res;
+  }, [bookedParkingCardData]);
 
   const tableData = {
     headerBgColor: "rgb(25, 118, 210)",
@@ -22,7 +38,7 @@ const Home = () => {
     evenRowBgColor: "",
     headers: [
       { title: "S.No" },
-      { title: "Person" },
+      { title: "User ID" },
       { title: "Card Number", align: "right" },
     ],
   };
@@ -42,6 +58,21 @@ const Home = () => {
     setShowBookNowPopUp(true);
   };
 
+  useEffect(() => {
+    dispatch(bookedParkingCard());
+  }, []);
+
+  const usedCards = useMemo(() => {
+    if (!bookedParkingCardData) {
+      return 0;
+    }
+    const obj = {};
+    bookedParkingCardData.forEach((card) => {
+      obj[card.cardId] = 0;
+    });
+    return Object.keys(obj).length;
+  }, [bookedParkingCardData]);
+
   return (
     <>
       <NavBar />
@@ -53,7 +84,7 @@ const Home = () => {
         <div className="Home_row_1">
           <div className="Home_card Home_card_1">
             <div className="Home_card_title">Total Available</div>
-            <div className="Home_card_value">3 Cards</div>
+            <div className="Home_card_value">{5 - usedCards} Cards</div>
           </div>
           <div className="Home_card Home_card_2" onClick={handleBookNow}>
             <div className="Home_card_add_icon">

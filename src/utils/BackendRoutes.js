@@ -8,4 +8,5 @@ export const BACKEND_ROUTES = {
   GET_USERS: "/v1/api/Users",
   GET_EACH_USER: "/v1/api/Users",
   GET_PAYMENT_SETTLE_UP: "/v1/api/Payment/settleUp",
+  BOOKED_PARKING_CARD: "/v1/api/ParkingCard/BookedParkingCard",
 };
