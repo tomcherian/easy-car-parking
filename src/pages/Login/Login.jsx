@@ -90,14 +90,18 @@ const Login = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    dispatch(postLogin(formData));
+
+    let hasErrors = false;
     const updatedValidationErrors = {};
 
     for (const fieldName in formData) {
       const value = formData[fieldName];
-
       const errorMessage = validateField(fieldName, { target: { value } });
       updatedValidationErrors[fieldName] = errorMessage;
+
+      if (errorMessage) {
+        hasErrors = true;
+      }
     }
 
     setValidationErrors(updatedValidationErrors);
@@ -108,6 +112,11 @@ const Login = () => {
     }
 
     setTouchedFields(updatedTouched);
+
+    if (!hasErrors) {
+      // Perform form submission logic
+      dispatch(postLogin(formData));
+    }
   };
 
   if (isLoading) {

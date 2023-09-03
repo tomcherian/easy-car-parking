@@ -5,9 +5,11 @@ const PopUp = ({
   children = <></>,
   showPopUp = false,
   setShowPopUp = () => {},
+  onClose = () => {},
 }) => {
   const handleOutsideClick = () => {
     setShowPopUp(false);
+    onClose();
   };
 
   const handleInsideClick = (e) => {

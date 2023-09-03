@@ -1,0 +1,71 @@
+.ShowAvailability_wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.ShowAvailability_heading {
+  margin: 0px 0px 0.35em;
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  font-size: 1.5rem;
+  line-height: 1.334;
+  letter-spacing: 0em;
+  color: rgb(28, 32, 37);
+  padding-bottom: 12px;
+}
+
+.ShowAvailability_date {
+  margin: 0px 0px 0.35em;
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  padding-bottom: 8px;
+  letter-spacing: 0.08333em;
+  text-transform: uppercase;
+  display: block;
+}
+
+.ShowAvailability_slots_wrapper {
+  display: flex;
+  gap: 18px;
+}
+
+.ShowAvailability_slot {
+  cursor: pointer;
+  padding: 6px 18px;
+  color: orange;
+  border: 2px solid orange;
+  border-radius: 8px;
+}
+
+.ShowAvailability_slot_selected {
+  color: white;
+  background-color: orange;
+}
+
+.ShowAvailability_day_wrapper {
+  display: flex;
+  gap: 32px;
+  flex-direction: column;
+}
+
+.ShowAvailability_button_wrapper {
+  padding-top: 32px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.ShowAvailability_button {
+  border-radius: 8px;
+  color: white;
+  background-color: orange;
+  padding: 12px 32px;
+  min-width: 64px;
+  cursor: pointer;
+  min-width: 150px;
+  text-align: center;
+}
+
+.ShowAvailability_button_disabled {
+  background-color: #ffc87d;
+}

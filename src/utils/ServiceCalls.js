@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const SERVICE_URL = process.env.REACT_APP_BE_BASE_URL;
+const SERVICE_URL = "https://parkingmanagement20230821181410.azurewebsites.net";
 
 export class ServiceCalls {
   static get(api, headers, params) {

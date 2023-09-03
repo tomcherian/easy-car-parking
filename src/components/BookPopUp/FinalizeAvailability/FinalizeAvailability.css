@@ -1,0 +1,64 @@
+.FinalizeAvailability_wrapper {
+  display: flex;
+  flex-direction: column;
+  min-width: 600px;
+}
+
+.FinalizeAvailability_heading {
+  margin: 0px 0px 0.35em;
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  font-size: 1.5rem;
+  line-height: 1.334;
+  letter-spacing: 0em;
+  color: rgb(28, 32, 37);
+  padding-bottom: 12px;
+}
+
+.FinalizeAvailability_slots_wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.FinalizeAvailability_slot_wrapper {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+}
+
+.FinalizeAvailability_slot_date {
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+  font-weight: 500;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  letter-spacing: 0.02857em;
+  text-transform: uppercase;
+  background-color: rgb(255, 255, 255);
+  padding: 8px 8px 8px 0px;
+}
+
+.FinalizeAvailability_time_range {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding-left: 32px;
+}
+
+.FinalizeAvailability_button {
+  border-radius: 8px;
+  color: white;
+  background-color: orange;
+  padding: 12px 32px;
+  min-width: 64px;
+  cursor: pointer;
+  min-width: 150px;
+  text-align: center;
+}
+
+.FinalizeAvailability_button_wrapper {
+  padding-top: 32px;
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 18px;
+}
