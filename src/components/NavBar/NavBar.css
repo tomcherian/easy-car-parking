@@ -56,7 +56,7 @@
 .NavBar_signout_wrapper {
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 16px;
   position: relative;
   text-transform: uppercase;
 }

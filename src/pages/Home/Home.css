@@ -53,17 +53,20 @@
 }
 
 .Home_row_2 {
-  /* display: grid;
+  display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 16px;
   justify-items: center;
-  max-height: 500px; */
-  display: flex;
-
 }
 
 @media (max-width: 800px) {
   .Home_row_1 {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 900px) {
+  .Home_row_2 {
     grid-template-columns: 1fr;
   }
 }
