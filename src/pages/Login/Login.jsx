@@ -138,7 +138,7 @@ const Login = () => {
           <form onSubmit={handleSubmit}>
             <div className="Login_field_username">
               <div className="Login_label">
-                Enter your username or email address
+                Enter your email address
               </div>
               <input
                 className="Login_input"
