@@ -13,7 +13,7 @@ const PaymentPopUp = ({
   const [debitUsersData, setDebitUsersData] = useState([]);
 
   useEffect(() => {
-    if (settleUpData.length) {
+    if (settleUpData?.length) {
       setCreditUsersData(
         settleUpData.filter((userData) => userData.amountToSettle < 1)
       );
@@ -59,14 +59,23 @@ const PaymentPopUp = ({
                 </div>
                 {!isCreditList && (
                   <div className="Settle_up_button_wrapper">
-                    <button className="btn btn-primary">Settle</button>
+                    <button
+                      className="btn btn-primary"
+                      onClick={() => {
+                        onHandleSettleUp(data);
+                      }}
+                    >
+                      Settle
+                    </button>
                   </div>
                 )}
               </div>
             ))}
           </div>
         </div>
-        <button className="btn btn-primary">Settle All</button>
+        {!isCreditList && (
+          <button className="btn btn-primary">Settle All</button>
+        )}
       </div>
     </PopUp>
   );

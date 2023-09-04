@@ -7,13 +7,22 @@ import BarChart from "../../components/BarChart/BarChart";
 import BookPopUp from "../../components/BookPopUp/BookPopUp";
 import { useDispatch, useSelector } from "react-redux";
 import { bookedParkingCard } from "./redux/HomeSlice";
+import { paymentStore } from "../Payment/redux/PaymentSlice";
 
 const Home = () => {
   const dispatch = useDispatch();
+  const [settleAmount, setSettleAmount] = useState(0);
   const bookedParkingCardData = useSelector(
     (state) => state?.dashboard?.bookedParkingCard
   );
   const [showBookNowPopUp, setShowBookNowPopUp] = useState(false);
+  const { paymentSettleUpData } = useSelector(paymentStore);
+  useEffect(() => {
+    let settleAmount = 0;
+    if (paymentSettleUpData?.length > 0)
+      paymentSettleUpData.map((data) => (settleAmount += data?.amountToSettle));
+    setSettleAmount(Number(settleAmount.toFixed(2)));
+  }, [paymentSettleUpData]);
   const rowData = useMemo(() => {
     let res = [];
     if (bookedParkingCardData) {
@@ -94,7 +103,7 @@ const Home = () => {
           </div>
           <div className="Home_card Home_card_3">
             <div className="Home_card_title">Balance</div>
-            <div className="Home_card_value">170 DHS</div>
+            <div className="Home_card_value">{settleAmount} DHS</div>
           </div>
         </div>
         <div className="Home_row_2">

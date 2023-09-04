@@ -10,6 +10,7 @@ import {
   getPaymentSettleUpList,
   paymentStore,
   postPayment,
+  postPaymentSettleUp,
 } from "./redux/PaymentSlice";
 import Loader from "../../components/Loader/Loader";
 import "./Payment.css";
@@ -64,7 +65,7 @@ const Payment = () => {
       ];
     });
     setRowData(tempRowData);
-  }, [paymentListData]);
+  }, [paymentListData, usersData]);
 
   const tableData = {
     headerBgColor: "#FED94D",
@@ -97,9 +98,15 @@ const Payment = () => {
     }
   };
 
-  const onHandleSettleUp = (settleUp) => {
-
-  }
+  const onHandleSettleUp = (paymentData) => {
+    const body = {
+      payerUserId: userData.id,
+      receiverUserId: paymentData.user.id,
+      amount: paymentData.amountToSettle,
+      date: moment().format(),
+    };
+    dispatch(postPaymentSettleUp(body));
+  };
 
   return (
     <>
