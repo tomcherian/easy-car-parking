@@ -76,9 +76,10 @@ body {
 }
 
 .main_background {
-  background-image: url("../assets/images/BackgroundImage.jpg");
-  background-size: cover;
-  background-position: center;
+  /* background-image: url("../assets/images/BackgroundImage.jpg"); */
+  /* background-size: cover;
+  background-position: center; */
+  background-color: #e0e0e0;
   flex: 1;
 }
 
