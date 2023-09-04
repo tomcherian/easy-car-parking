@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { AllRoutes } from "../../utils/RouteConstants";
 import { loginStore, postLogin } from "./redux/LoginSlice";
 import EyeLock from "../../assets/images/EyeLock.png";
-import EyeOpen from "../../assets/images/EyeOpen.png~";
+import EyeOpen from "../../assets/images/EyeOpen.png";
 import Loader from "../../components/Loader/Loader";
 import "./Login.css";
 
