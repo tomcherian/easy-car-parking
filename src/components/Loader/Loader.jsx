@@ -1,7 +1,7 @@
 import React from "react";
 import "./Loader.css";
 
-const Loader = () => {
+const Loader = ( ) => {
   return (
     <div className="d-flex justify-content-center align-items-center vh-100 Loader-wrapper">
       <div className="spinner-border" role="status">
