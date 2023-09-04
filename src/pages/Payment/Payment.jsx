@@ -39,7 +39,7 @@ const Payment = () => {
   useEffect(() => {
     dispatch(getPaymentList());
     dispatch(getUsersData());
-    dispatch(getPaymentSettleUpList({ userId: 23 }));
+    dispatch(getPaymentSettleUpList({ userId: userData.id }));
   }, []);
 
   useEffect(() => {
