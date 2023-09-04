@@ -78,5 +78,4 @@ export const BookPopUpSlice = createSlice({
 });
 
 export const { resetBookingData } = BookPopUpSlice.actions;
-// export const loginStore = (state) => state.login;
 export default BookPopUpSlice.reducer;

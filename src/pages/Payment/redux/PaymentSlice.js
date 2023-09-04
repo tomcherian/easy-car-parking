@@ -72,11 +72,7 @@ export const paymentSlice = createSlice({
     paymentListData: [],
     paymentSettleUpData: [],
   },
-  reducers: {
-    // setIsLoggedIn: (state, action) => {
-    //   state.isLoggedIn = action.payload;
-    // },
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder.addCase(postPayment.pending, (state) => {
       state.isLoading = true;

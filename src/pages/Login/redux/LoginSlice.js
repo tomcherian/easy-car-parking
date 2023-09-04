@@ -32,7 +32,6 @@ export const getEachUser = createAsyncThunk(
         `${BACKEND_ROUTES.GET_EACH_USER}/${userId}`,
         headers
       );
-      console.log("data", response)
       return response?.data;
     } catch (error) {
       console.log("console ", error);

@@ -18,12 +18,9 @@ const formatDateWithoutTimeZone = (date) => {
 
 const CheckAvailability = ({ setSection }) => {
   const dispatch = useDispatch();
-  const [singleDaySelected, setSingleDaySelected] = useState(false);
-  const [startDate, setStartDate] = useState(dayjs("2023-09-04"));
-  const [endDate, setEndDate] = useState(dayjs("2023-09-10"));
-  // const [singleDaySelected, setSingleDaySelected] = useState(true);
-  // const [startDate, setStartDate] = useState(null);
-  // const [endDate, setEndDate] = useState(null);
+  const [singleDaySelected, setSingleDaySelected] = useState(true);
+  const [startDate, setStartDate] = useState(null);
+  const [endDate, setEndDate] = useState(null);
   const [startError, setStartError] = useState("");
   const [endError, setEndError] = useState("");
   const [touched, setTouched] = useState(false);
