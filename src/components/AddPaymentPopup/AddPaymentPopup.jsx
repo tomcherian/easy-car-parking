@@ -12,7 +12,7 @@ const AddPaymentPopUp = ({
   return (
     <PopUp showPopUp={showPopUp} setShowPopUp={setShowPopUp}>
       <div className="Add_payment_wrapper">
-        <div className="PaymentPopUp">Add payment here</div>
+        <div className="Add_PaymentPopUp">Add payment here</div>
         <div className="input-group">
           <input
             value={payment}

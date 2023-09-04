@@ -51,7 +51,7 @@ const NavBar = () => {
           </div>
           <div className="NavBar_signout">
             <span className="NavBar_signout_wrapper">
-              {userData?.name ?? "User"}
+              {/* {userData?.name ?? "User"} */}
               <div
                 className="NavBar_logo"
                 onClick={() => {
@@ -60,7 +60,6 @@ const NavBar = () => {
               >
                 {userData.name.split(" ").slice(0, 1)}
               </div>
-              {/* */}
               {showUserMenu && (
                 <div className="NavBar_menu_options">
                   <div className="NavBar_menu_option" onClick={handleProfile}>
