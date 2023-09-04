@@ -24,6 +24,7 @@ const FinalizeAvailability = ({ finalSlots, setSection, setShowPopUp }) => {
   const handleBook = () => {
     const data = slots.map((slot) => {
       return {
+        user: {},
         userId: userId,
         time: new Date().toISOString(),
         startDate: dayjs(slot.startDate).format("YYYY-MM-DDTHH:mm:ss") + "Z",
