@@ -124,6 +124,7 @@ const Login = () => {
 
   return (
     <div className="Login_container main_background">
+      {isLoading && <Loader />}
       <div className="Login_card">
         <div className="Login_sign_up" onClick={handleSignUp}>
           No Account ?<br /> Sign up

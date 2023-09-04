@@ -1,13 +1,13 @@
-.PaymentPopUp{
+.PaymentPopUp {
     padding: 10px;
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 20px;
     height: 500px;
-    width: 300px;
+    /* width: 300px; */
 }
 
-.Payment_popup_wrapper{
+.Payment_popup_wrapper {
     display: flex;
     flex-direction: column;
     gap: 5px;
@@ -20,18 +20,71 @@
     justify-content: start;
     gap: 20px;
     width: 100%;
-    
+
 }
 
 .Settle_up_list_user_wrapper {
     flex: 3;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 5px;
     background-color: var(--gray);
     border-radius: 5px;
+    height: 38px;
 }
 
-.Settle_up_button_wrapper{
+.Settle_up_button_wrapper {
     flex: 1;
+}
+
+.SettleUp_heading {
+    color: var(--black);
+    font-family: Poppins;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.SettleUp_users_list {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    height: 450px;
+    overflow-y: scroll;
+}
+
+.SettleUp_Filter_wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.Credit_debit_header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+    margin: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.Credit_heading {
+    background-color: green;
+    color: white;
+    flex: 1;
+
+}
+
+.Debit_heading {
+    background-color: orange;
+    color: white;
+    flex: 1;
+}
+
+.Div_highlight {
+    box-shadow: 0 0 10px 7px rgba(0, 0, 0, 0.3);
 }
