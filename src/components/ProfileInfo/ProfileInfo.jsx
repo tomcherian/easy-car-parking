@@ -1,6 +1,5 @@
-import { useNavigate } from "react-router";
 import "./ProfileInfo.css";
-import React, { useState } from "react";
+import React from "react";
 
 const userInfo = {
   email: "abc@abcgmail.com",

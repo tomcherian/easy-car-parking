@@ -8,11 +8,13 @@ const ProtectedRoute = () => {
   const dispatch = useDispatch();
   const accessToken = sessionStorage.getItem("access_token");
   const { userData, isLoading } = useSelector(loginStore);
+
   useEffect(() => {
     if (!userData?.id) {
       dispatch(getEachUser());
     }
   }, [userData]);
+
   return accessToken ? (
     <>
       {isLoading && <Loader />}

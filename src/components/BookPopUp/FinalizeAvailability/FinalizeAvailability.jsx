@@ -4,7 +4,7 @@ import { MobileTimePicker } from "@mui/x-date-pickers";
 import dayjs from "dayjs";
 import _ from "lodash";
 import { useDispatch, useSelector } from "react-redux";
-import { bookParking, resetBookingData } from "../redux/BookPopUpSlice";
+import { bookParking } from "../redux/BookPopUpSlice";
 
 const FinalizeAvailability = ({ finalSlots, setSection, setShowPopUp }) => {
   const dispatch = useDispatch();
@@ -28,11 +28,10 @@ const FinalizeAvailability = ({ finalSlots, setSection, setShowPopUp }) => {
         time: new Date().toISOString(),
         startDate: dayjs(slot.startDate).format("YYYY-MM-DDTHH:mm:ss") + "Z",
         endDate: dayjs(slot.endDate).format("YYYY-MM-DDTHH:mm:ss") + "Z",
-        parkedLocation: "",
+        parkedLocation: "Dubai",
         cardId: slot.cardNumber,
       };
     });
-    console.log({ data });
     dispatch(bookParking(data));
   };
 
@@ -78,7 +77,6 @@ const FinalizeAvailability = ({ finalSlots, setSection, setShowPopUp }) => {
                       ) {
                         prevSlots[index].startDate = newValue;
                       }
-                      console.log(prevSlots);
                       return [...prevSlots];
                     });
                   }}

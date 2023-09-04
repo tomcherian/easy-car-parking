@@ -142,7 +142,6 @@ const SignUp = () => {
     }
     setFormData(updatedFormData);
 
-    // Validate the field if it's touched
     if (touchedFields[fieldName]) {
       const errorMessage = validateField(fieldName, event);
       setValidationErrors({ ...validationErrors, [fieldName]: errorMessage });
@@ -193,7 +192,6 @@ const SignUp = () => {
     setTouchedFields(updatedTouched);
 
     if (!hasErrors) {
-      // Perform form submission logic
       dispatch(postSignUp(apiBody));
     }
   };

@@ -1,8 +1,6 @@
 import { useNavigate } from "react-router";
 import "./ProfileUpdate.css";
 import React, { useState } from "react";
-import { AllRoutes } from "../../utils/RouteConstants";
-import NavBar from "../NavBar/NavBar";
 
 const userInfo = {
   email: "abc@abcgmail.com",
@@ -42,8 +40,6 @@ const ProfileUpdate = ({ showProfileInfo, setShowProfileInfo }) => {
     carNumber: false,
     file: false,
   });
-
-  const navigate = useNavigate();
 
   const validateEmail = (event) => {
     if (!event.target.value) return "Email is required.";
@@ -135,7 +131,6 @@ const ProfileUpdate = ({ showProfileInfo, setShowProfileInfo }) => {
     }
     setFormData(updatedFormData);
 
-    // Validate the field if it's touched
     if (touchedFields[fieldName]) {
       const errorMessage = validateField(fieldName, event);
       setValidationErrors({ ...validationErrors, [fieldName]: errorMessage });
@@ -178,7 +173,6 @@ const ProfileUpdate = ({ showProfileInfo, setShowProfileInfo }) => {
     setTouchedFields(updatedTouched);
 
     if (!hasErrors) {
-      // Perform form submission logic
       setShowProfileInfo(true);
     }
   };

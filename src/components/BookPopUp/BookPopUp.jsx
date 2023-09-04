@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./BookPopUp.css";
 import PopUp from "../PopUp/PopUp";
 import { useDispatch, useSelector } from "react-redux";
@@ -6,10 +6,7 @@ import CheckAvailability from "./CheckAvailability/CheckAvailability";
 import ShowAvailability from "./ShowAvailability/ShowAvailability";
 import FinalizeAvailability from "./FinalizeAvailability/FinalizeAvailability";
 import OverlayLoader from "../OverlayLoader/OverlayLoader";
-import {
-  resetBookingAvailability,
-  resetBookingData,
-} from "./redux/BookPopUpSlice";
+import { resetBookingData } from "./redux/BookPopUpSlice";
 import { Alert, Snackbar } from "@mui/material";
 
 const BookPopUp = ({ showPopUp, setShowPopUp }) => {

@@ -4,7 +4,6 @@ import { useNavigate } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { AllRoutes } from "../../utils/RouteConstants";
 import { loginStore, postLogin } from "./redux/LoginSlice";
-import Loader from "../../components/Loader/Loader";
 import EyeLock from "../../assets/images/EyeLock.png";
 import EyeOpen from "../../assets/images/EyeOpen.png";
 import "./Login.css";
@@ -74,7 +73,6 @@ const Login = () => {
     let updatedFormData = { ...formData, [fieldName]: event.target.value };
     setFormData(updatedFormData);
 
-    // Validate the field if it's touched
     if (touchedFields[fieldName]) {
       const errorMessage = validateField(fieldName, event);
       setValidationErrors({ ...validationErrors, [fieldName]: errorMessage });
@@ -114,7 +112,6 @@ const Login = () => {
     setTouchedFields(updatedTouched);
 
     if (!hasErrors) {
-      // Perform form submission logic
       dispatch(postLogin(formData));
     }
   };

@@ -1,8 +1,6 @@
 import React, { useMemo, useState } from "react";
 import "./ShowAvailability.css";
-
 import { useSelector } from "react-redux";
-import dayjs from "dayjs";
 
 function areObjectsEqual(slot1, slot2) {
   const keys1 = Object.keys(slot1);
@@ -105,7 +103,6 @@ const ShowAvailability = ({ setSection, setFinalSlots }) => {
     );
   }
 
-  console.log({ availableSlots, selectedSlots });
   return (
     <div className="ShowAvailability_wrapper">
       <div className="ShowAvailability_heading ">Available Slots</div>

@@ -9,11 +9,9 @@ import Profile from "../pages/Profile/Profile";
 import NotFound from "../pages/NotFound/NotFound";
 import { AllRoutes } from "../utils/RouteConstants";
 import ProtectedRoute from "../components/ProtectedRoute/ProtectedRoute";
-import { useSelector } from "react-redux";
 
 const AppRoutes = () => {
-  const store = useSelector((state) => state);
-  console.log({ store });
+
   return (
     <BrowserRouter>
       <Routes>
