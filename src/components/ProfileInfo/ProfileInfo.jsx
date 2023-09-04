@@ -1,18 +1,7 @@
-import "./ProfileInfo.css";
 import React from "react";
+import "./ProfileInfo.css";
 
-const userInfo = {
-  email: "abc@abcgmail.com",
-  username: "Anonymous Person",
-  password: "strongPassword",
-  carNumber: "DUBAI 007",
-  file: {
-    selectedFile: null,
-    base64String: "",
-  },
-};
-
-const ProfileInfo = ({ showProfileInfo, setShowProfileInfo }) => {
+const ProfileInfo = ({ showProfileInfo, setShowProfileInfo, userData }) => {
   const handleProfileUpdate = () => {
     setShowProfileInfo(false);
   };
@@ -27,22 +16,22 @@ const ProfileInfo = ({ showProfileInfo, setShowProfileInfo }) => {
         <div className="ProfileInfo_item">
           <div>Email</div>
           <div>:</div>
-          {userInfo.email}
+          {userData.email}
         </div>
         <div className="ProfileInfo_item">
           <div>Username</div>
           <div>:</div>
-          {userInfo.username}
+          {userData.name}
         </div>
         <div className="ProfileInfo_item">
           <div>password</div>
           <div>:</div>
-          {userInfo.password}
+          {userData.password}
         </div>
         <div className="ProfileInfo_item">
           <div>Car Number</div>
           <div>:</div>
-          {userInfo.carNumber}
+          {userData.carNumber}
         </div>
       </div>
       <div className="ProfileInfo_btn_wrapper">
