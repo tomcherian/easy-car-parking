@@ -79,8 +79,10 @@ body {
   /* background-image: url("../assets/images/BackgroundImage.jpg"); */
   /* background-size: cover;
   background-position: center; */
-  background-color: #e0e0e0;
+  /* background-color: #e0e0e0;  */
   flex: 1;
+  background-color: #70B7D6;
+  background-image: linear-gradient(to right, #3696c1, #bbbbff);
 }
 
 #root {

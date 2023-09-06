@@ -51,7 +51,6 @@ const NavBar = () => {
           </div>
           <div className="NavBar_signout">
             <span className="NavBar_signout_wrapper">
-              {/* {userData?.name ?? "User"} */}
               <div
                 className="NavBar_logo"
                 onClick={() => {

@@ -13,7 +13,9 @@
   right: 118px;
   min-width: 540px;
   border-radius: 40px;
-  background: white;
+  background: #7b9bd7;
+  background-image: linear-gradient(to right, #7b9bd7, #ffffff);
+  box-shadow: 0 0px 10px 12px rgb(29 26 109 / 20%);
 }
 
 .Login_sign_up {
@@ -135,4 +137,11 @@
   right: 10px;
   top: 10px;
   cursor: pointer;
+}
+
+.Park_background {
+  height: calc(100vh - 100px);
+  min-width: 540px;
+  margin: 50px;
+  border-radius: 50px;
 }

@@ -88,10 +88,7 @@
 }
 
 .NavBar_logo {
-  border: 3px solid white;
-  border-radius: 100px;
   padding: 8px;
-  width: 32px;
   height: 32px;
   display: flex;
   justify-content: center;
