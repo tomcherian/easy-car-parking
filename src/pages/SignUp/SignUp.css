@@ -3,6 +3,7 @@
   height: 100vh;
   opacity: 0.8;
   position: relative;
+  margin-top: 0 !important;
 }
 
 .SignUp_card {
@@ -30,7 +31,7 @@
   top: 50px;
   right: 44px;
   position: absolute;
-  color: var(--link);
+  color: #0b5ed7;
   font-family: Poppins;
   font-size: 13px;
   font-style: normal;
@@ -48,7 +49,7 @@
 }
 
 .SignUp_welcome_title_green {
-  color: var(--link);
+  color: #0b5ed7;
   font-family: Poppins;
   font-size: 21px;
   font-style: normal;
@@ -63,11 +64,11 @@
   font-style: normal;
   font-weight: 500;
   line-height: normal;
-  margin-bottom: 44px;
+  margin-bottom: 20px;
 }
 
 .SignUp_field {
-  margin-bottom: 38px;
+  margin-bottom: 20px;
 }
 
 .SignUp_label {
@@ -77,7 +78,7 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-  margin-bottom: 13px;
+  margin-bottom: 5px;
 }
 
 .SignUp_input {
@@ -86,6 +87,7 @@
   background: #fff;
   padding: 19px 25px;
   width: 100%;
+  background-color: #d7dffc;
 }
 
 .SignUp_input::placeholder {
@@ -131,6 +133,9 @@
   min-width: 236px;
   outline: none;
   border: none;
+  color: var(--bs-btn-hover-color);
+  background-color: var(--bs-btn-bg);
+  border-color: var(--bs-btn-hover-border-color);
 }
 
 body .invalid-feedback {
@@ -143,7 +148,8 @@ body .invalid-feedback {
   margin: 50px;
   border-radius: 50px;
 }
-.Sign_up_paragraph{
+
+.Sign_up_paragraph {
   margin-bottom: 0;
 }
 
@@ -171,9 +177,13 @@ body .invalid-feedback {
     white-space: nowrap;
   }
 
-  .SignUp_paragraph{
+  .SignUp_paragraph {
     display: inline-block;
     margin-left: 4px;
     margin-bottom: 8px;
   }
+}
+
+.SignUp_upload {
+  background-color: #d7dffc;
 }
