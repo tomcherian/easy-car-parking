@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./PaymentPopUp.css";
 import PopUp from "../PopUp/PopUp";
+import { capitalizeWords } from "../../pages/Home/Home";
 
 const PaymentPopUp = ({
   showPopUp,
@@ -51,26 +52,28 @@ const PaymentPopUp = ({
             </div>
           </div>
           <div className="SettleUp_users_list">
-            {(isCreditList ? creditUsersData : debitUsersData).map((data) => (
-              <div className="Settle_up_list_wrapper" key={data.userId}>
-                <div className="Settle_up_list_user_wrapper">
-                  <div>{data.user.name}</div>
-                  <div>{data.amountToSettle} AED</div>
-                </div>
-                {!isCreditList && (
-                  <div className="Settle_up_button_wrapper">
-                    <button
-                      className="btn btn-primary"
-                      onClick={() => {
-                        onHandleSettleUp(data);
-                      }}
-                    >
-                      Settle
-                    </button>
+            {(isCreditList ? creditUsersData : debitUsersData).map(
+              (data, index) => (
+                <div className="Settle_up_list_wrapper" key={index}>
+                  <div className="Settle_up_list_user_wrapper">
+                    <div>{capitalizeWords(data.user.name)}</div>
+                    <div>{data.amountToSettle} AED</div>
                   </div>
-                )}
-              </div>
-            ))}
+                  {!isCreditList && (
+                    <div className="Settle_up_button_wrapper">
+                      <button
+                        className="btn btn-primary"
+                        onClick={() => {
+                          onHandleSettleUp(data);
+                        }}
+                      >
+                        Settle
+                      </button>
+                    </div>
+                  )}
+                </div>
+              )
+            )}
           </div>
         </div>
         {!isCreditList && (

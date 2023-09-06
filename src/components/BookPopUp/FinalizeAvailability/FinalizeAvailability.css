@@ -62,3 +62,40 @@
   justify-content: flex-end;
   padding-right: 18px;
 }
+
+@media (max-width: 800px) {
+  .FinalizeAvailability_wrapper {
+    min-width: 0;
+  }
+  .FinalizeAvailability_slot_date {
+    padding: 0;
+  }
+
+  .FinalizeAvailability_slot_wrapper {
+    display: grid;
+    gap: 8px;
+  }
+
+  .FinalizeAvailability_time_range {
+    padding-left: 0;
+  }
+
+  .FinalizeAvailability_button_wrapper {
+    padding-right: 0;
+  }
+}
+
+@media (max-width: 800px) {
+  .FinalizeAvailability_time_range {
+    display: grid;
+    gap: 8px;
+  }
+
+  .FinalizeAvailability_time_split {
+    display: none;
+  }
+
+  .FinalizeAvailability_slots_wrapper {
+    gap: 32px;
+  }
+}

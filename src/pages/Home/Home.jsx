@@ -9,6 +9,17 @@ import { useDispatch, useSelector } from "react-redux";
 import { bookedParkingCard } from "./redux/HomeSlice";
 import { paymentStore } from "../Payment/redux/PaymentSlice";
 
+export function capitalizeWords(str) {
+  return str.toLowerCase().replace(/(^|\s)\S/g, (match) => match.toUpperCase());
+}
+
+function isCurrentDateTimeInRange(startDateTime, endDateTime) {
+  const currentDate = new Date();
+  const startDate = new Date(startDateTime);
+  const endDate = new Date(endDateTime);
+  return currentDate >= startDate && currentDate <= endDate;
+}
+
 const Home = () => {
   const dispatch = useDispatch();
   const [settleAmount, setSettleAmount] = useState(0);
@@ -17,24 +28,33 @@ const Home = () => {
   );
   const [showBookNowPopUp, setShowBookNowPopUp] = useState(false);
   const { paymentSettleUpData } = useSelector(paymentStore);
+
   useEffect(() => {
     let settleAmount = 0;
     if (paymentSettleUpData?.length > 0)
       paymentSettleUpData.map((data) => (settleAmount += data?.amountToSettle));
     setSettleAmount(Number(settleAmount.toFixed(2)));
   }, [paymentSettleUpData]);
+
   const rowData = useMemo(() => {
     let res = [];
     if (bookedParkingCardData) {
       bookedParkingCardData.forEach((cardInfo, index) => {
-        res.push([index, `User ${cardInfo.userId}`, cardInfo.cardId]);
+        res.push([
+          index,
+          `${capitalizeWords(cardInfo.user.name)}`,
+          cardInfo.cardId,
+          cardInfo.startDate.slice(11, 16) +
+            " - " +
+            cardInfo.endDate.slice(11, 16),
+        ]);
       });
     } else {
       res = [
-        [1, "Person 1", 1],
-        [2, "Person 2", 2],
-        [3, "Person 3", 3],
-        [4, "Person 4", 4],
+        [1, "Person 1", 1, "09:00 - 18:00"],
+        [2, "Person 2", 2, "09:00 - 18:00"],
+        [3, "Person 3", 3, "09:00 - 18:00"],
+        [4, "Person 4", 4, "09:00 - 18:00"],
       ];
     }
     return res;
@@ -48,7 +68,8 @@ const Home = () => {
     headers: [
       { title: "S.No" },
       { title: "User ID" },
-      { title: "Card Number", align: "right" },
+      { title: "Card Number" },
+      { title: "Timing" },
     ],
   };
 
@@ -76,8 +97,10 @@ const Home = () => {
       return 0;
     }
     const obj = {};
-    bookedParkingCardData.forEach((card) => {
-      obj[card.cardId] = 0;
+    bookedParkingCardData.forEach((card, index) => {
+      if (isCurrentDateTimeInRange(card.startDate, card.endDate)) {
+        obj[card.cardId] = 0;
+      }
     });
     return Object.keys(obj).length;
   }, [bookedParkingCardData]);

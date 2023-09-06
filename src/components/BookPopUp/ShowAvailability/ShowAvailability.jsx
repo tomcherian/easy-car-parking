@@ -107,16 +107,17 @@ const ShowAvailability = ({ setSection, setFinalSlots }) => {
     <div className="ShowAvailability_wrapper">
       <div className="ShowAvailability_heading ">Available Slots</div>
       <div className="ShowAvailability_day_wrapper">
-        {Object.keys(availableSlots).map((date) => {
+        {Object.keys(availableSlots).map((date, index) => {
           return (
-            <div>
+            <div key={index}>
               <div className="ShowAvailability_date">
                 {new Date(date).toString().slice(4, 15)}
               </div>
               <div className="ShowAvailability_slots_wrapper">
-                {availableSlots[date].map((slot) => {
+                {availableSlots[date].map((slot, index) => {
                   return (
                     <div
+                      key={index}
                       className={`ShowAvailability_slot ${
                         findSlotIndex(slot) !== -1 &&
                         "ShowAvailability_slot_selected"

@@ -12,7 +12,7 @@ const AddPaymentPopUp = ({
   return (
     <PopUp showPopUp={showPopUp} setShowPopUp={setShowPopUp}>
       <div className="Add_payment_wrapper">
-        <div className="Add_PaymentPopUp">Add payment here</div>
+        <div className="Add_PaymentPopUp">Add Payment Here</div>
         <div className="input-group">
           <input
             value={payment}
@@ -21,13 +21,13 @@ const AddPaymentPopUp = ({
             }}
             type="number"
             className="form-control"
-            placeholder="Add Payment here"
+            placeholder="Add Payment Here"
             aria-label="Recipient's username"
             aria-describedby="basic-addon2"
           />
         </div>
         <button
-          className="btn btn-outline-secondary add-button"
+          className="add-button"
           type="button"
           onClick={onAddPayment}
         >
