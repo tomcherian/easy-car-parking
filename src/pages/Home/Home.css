@@ -1,16 +1,16 @@
 .Home_row_1 {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 16px;
-  justify-items: center;
+  /* display: grid;
+  grid-template-columns: 1fr 1fr 1fr; */
+  /* gap: 16px;
+  justify-items: center; */
   margin: 18px;
 }
 
 .Home_card {
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
   border-radius: 8px;
   min-height: 100px;
-  width: 100%;
+  width: 250px;
+  height: 100%;
   max-width: 250px;
   position: relative;
   padding: 18px;
@@ -18,12 +18,12 @@
   background-position: center;
   color: white;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
-
   font-family: Roboto, Helvetica, Arial, sans-serif;
   font-weight: 400;
   font-size: 24px;
   line-height: 1.235;
   letter-spacing: 0.00735em;
+  box-shadow: 0 0px 10px 5px rgb(29 26 109 / 20%);
 }
 
 .Home_card_title {
@@ -34,22 +34,19 @@
   text-align: end;
 }
 
-.Home_card_1 {
-  background-image: url("../../assets/images/Card2.jpg");
-}
-
 .Home_card_2 {
-  background-image: url("../../assets/images/Card3.jpg");
   display: flex;
-  flex-direction: column;
   gap: 8px;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-}
-
-.Home_card_3 {
-  background-image: url("../../assets/images/Card2.jpg");
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.235;
+  letter-spacing: 0.00735em;
 }
 
 .Home_row_2 {
@@ -99,4 +96,20 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.Home_nav_wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.Home_show {
+  display: flex;
+  gap: 30px;
+}
+
+.Book_now_button {
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }

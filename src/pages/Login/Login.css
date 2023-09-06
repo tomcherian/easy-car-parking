@@ -23,7 +23,7 @@
   top: 50px;
   right: 44px;
   position: absolute;
-  color: var(--link);
+  color: #0b5ed7;
   font-family: Poppins;
   font-size: 13px;
   font-style: normal;
@@ -41,7 +41,7 @@
 }
 
 .Login_welcome_title_green {
-  color: var(--link);
+  color: #0b5ed7;
   font-family: Poppins;
   font-size: 21px;
   font-style: normal;
@@ -60,7 +60,7 @@
 }
 
 .Login_field_username {
-  margin-bottom: 38px;
+  margin-bottom: 20px;
 }
 
 .Login_label {
@@ -70,7 +70,7 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-  margin-bottom: 13px;
+  margin-bottom: 5px;
 }
 
 .Login_input {
@@ -79,6 +79,7 @@
   background: #fff;
   padding: 19px 25px;
   width: 100%;
+  background-color: #d7dffc;
 }
 
 .Login_input::placeholder {
@@ -111,10 +112,11 @@
 }
 
 .Login_button {
-  margin-top: 64px;
+  margin-top: 30px;
   cursor: pointer;
   border-radius: 10px;
-  background: orange;
+  background-color: var(--bs-btn-hover-bg);
+  border-color: var(--bs-btn-hover-border-color);
   box-shadow: 0px 4px 19px 0px rgba(119, 147, 65, 0.3);
   color: #fff;
   font-family: Poppins;

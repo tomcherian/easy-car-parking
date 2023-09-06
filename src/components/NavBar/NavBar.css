@@ -30,7 +30,7 @@
 
 .NavBar_title {
   cursor: pointer;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   flex: 1;
   display: flex;
   align-items: center;

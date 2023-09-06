@@ -189,7 +189,7 @@ const Login = () => {
               )}
             </div>
             <div className="Login_button_wrapper">
-              <button type="submit" className="Login_button">
+              <button type="submit" className="Login_button btn btn-primary">
                 Sign in
               </button>
             </div>
