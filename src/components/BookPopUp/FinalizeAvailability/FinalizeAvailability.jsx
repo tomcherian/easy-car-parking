@@ -42,7 +42,7 @@ const FinalizeAvailability = ({ finalSlots, setSection, setShowPopUp }) => {
       <div className="FinalizeAvailability_slots_wrapper">
         {slots.map((slot, index) => {
           return (
-            <div className="FinalizeAvailability_slot_wrapper">
+            <div key={index} className="FinalizeAvailability_slot_wrapper">
               <div className="FinalizeAvailability_slot_date">
                 {dayjs(slot.startDate).format("YYYY-MM-DD")}
               </div>
@@ -63,7 +63,7 @@ const FinalizeAvailability = ({ finalSlots, setSection, setShowPopUp }) => {
                     });
                   }}
                 />
-                <div>-</div>
+                <div className="FinalizeAvailability_time_split">-</div>
                 <MobileTimePicker
                   ampm={false}
                   orientation="landscape"

@@ -130,7 +130,7 @@ const Login = () => {
       <img src={ParkBackground} alt="park background" className="Park_background"/>
       <div className="Login_card">
         <div className="Login_sign_up" onClick={handleSignUp}>
-          No Account ?<br /> Sign up
+          <p className="Login_sign_up_paragraph">No Account ?</p><p className="Login_sign_up_paragraph">Sign up</p>
         </div>
         <div className="Login_welcome_title">
           Welcome to <span className="Login_welcome_title_green">ParkNow</span>

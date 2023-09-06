@@ -18,6 +18,7 @@ import { dashboardStore, getUsersData } from "../Home/redux/HomeSlice";
 import { getUserData } from "../../utils/commonFunctions";
 import moment from "moment/moment";
 import { loginStore } from "../Login/redux/LoginSlice";
+import { capitalizeWords } from "../Home/Home";
 
 const Payment = () => {
   const dispatch = useDispatch();
@@ -40,7 +41,7 @@ const Payment = () => {
     dispatch(getPaymentList());
     dispatch(getUsersData());
     dispatch(getPaymentSettleUpList({ userId: userData.id }));
-  }, []);
+  }, [userData]);
 
   useEffect(() => {
     if (isPaymentAddedSuccess) {
@@ -60,7 +61,9 @@ const Payment = () => {
     const tempRowData = paymentListData?.map((data) => {
       return [
         data.payerUserId,
-        getUserData(data.payerUserId, usersData)?.name ?? "User",
+        capitalizeWords(
+          getUserData(data.payerUserId, usersData)?.name ?? "User"
+        ),
         data?.amount,
       ];
     });

@@ -1,19 +1,20 @@
 .Add_payment_wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  gap: 10px;
+  padding: 20px;
 }
 
 .Add_PaymentPopUp {
-    color: var(--black);
-    font-family: Poppins;
-    font-size: 15px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: normal;
+  color: var(--black);
+  font-family: Poppins;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  margin-bottom: 16px;
 }
 
 /* .btn{
@@ -22,12 +23,19 @@
 
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    appearance: none;
-    margin: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
 }
 
 .add-button {
-    align-self: flex-end;
-    background-color: var(--primary);
+  align-self: flex-end;
+  min-width: 150px;
+  border: 2px solid orange;
+  background-color: white;
+  color: orange;
+  text-align: center;
+  padding: 8px 0;
+  border-radius: 8px;
+  margin-top: 16px;
 }

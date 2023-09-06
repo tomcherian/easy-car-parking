@@ -44,3 +44,11 @@
   cursor: pointer;
   border-top-right-radius: 8px;
 }
+
+@media (max-width: 500px) {
+  .PopUp_content {
+    min-width: 0;
+    width: 95%;
+    max-width: 400px;
+  }
+}

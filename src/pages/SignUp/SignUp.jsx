@@ -212,8 +212,8 @@ const SignUp = () => {
       />
       <div className="SignUp_card">
         <div className="SignUp_sign_up" onClick={handleSignIn}>
-          Have an Account ?<br />
-          Sign in
+          <p className="Sign_up_paragraph">Have an Account ?</p>
+          <p className="Sign_up_paragraph">Sign in</p>
         </div>
         <div className="SignUp_welcome_title">
           Welcome to <span className="SignUp_welcome_title_green">ParkNow</span>

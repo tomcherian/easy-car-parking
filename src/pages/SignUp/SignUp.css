@@ -143,3 +143,37 @@ body .invalid-feedback {
   margin: 50px;
   border-radius: 50px;
 }
+.Sign_up_paragraph{
+  margin-bottom: 0;
+}
+
+@media (max-width: 800px) {
+  .SignUp_card {
+    right: 50%;
+    transform: translate(50%, -50%);
+    width: 80%;
+    max-width: 540px;
+    min-width: 0;
+  }
+}
+
+@media (max-width: 550px) {
+  .SignUp_card {
+    width: 95%;
+    padding: 32px;
+  }
+
+  .SignUp_sign_up {
+    position: relative;
+    top: 0;
+    right: 0;
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  .SignUp_paragraph{
+    display: inline-block;
+    margin-left: 4px;
+    margin-bottom: 8px;
+  }
+}
