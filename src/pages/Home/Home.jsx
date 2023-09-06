@@ -8,6 +8,7 @@ import BookPopUp from "../../components/BookPopUp/BookPopUp";
 import { useDispatch, useSelector } from "react-redux";
 import { bookedParkingCard } from "./redux/HomeSlice";
 import { paymentStore } from "../Payment/redux/PaymentSlice";
+import { commonStore } from "../../commonSlice";
 
 export function capitalizeWords(str) {
   return str.toLowerCase().replace(/(^|\s)\S/g, (match) => match.toUpperCase());
@@ -28,7 +29,7 @@ const Home = () => {
   );
   const [showBookNowPopUp, setShowBookNowPopUp] = useState(false);
   const { paymentSettleUpData } = useSelector(paymentStore);
-
+  const { showDrawer } = useSelector(commonStore);
   useEffect(() => {
     let settleAmount = 0;
     if (paymentSettleUpData?.length > 0)
@@ -112,7 +113,11 @@ const Home = () => {
         showPopUp={showBookNowPopUp}
         setShowPopUp={setShowBookNowPopUp}
       />
-      <div className="Home_wrapper main_background">
+      <div
+        className={`Home_wrapper main_background ${
+          showDrawer ? "Drawer_opened" : ""
+        }`}
+      >
         <div className="Home_row_1">
           <div className="Home_nav_wrapper">
             <div className="Home_show">

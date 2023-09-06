@@ -8,14 +8,16 @@ import { AllRoutes } from "../../utils/RouteConstants";
 import { loginStore, setIsLoggedIn } from "../../pages/Login/redux/LoginSlice";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import "./NavBar.css";
+import { commonStore, setShowDrawer } from "../../commonSlice";
 
 const NavBar = () => {
   const dispatch = useDispatch();
   const [showUserMenu, setShowUserMenu] = useState(false);
-  const [showDrawer, setShowDrawer] = useState(false);
+  // const [showDrawer, setShowDrawer] = useState(false);
   const navigate = useNavigate();
 
   const { userData } = useSelector(loginStore);
+  const { showDrawer } = useSelector(commonStore);
 
   const handleProfile = () => {
     setShowUserMenu(false);
@@ -41,7 +43,7 @@ const NavBar = () => {
             <MenuIcon
               className="NavBar_icon"
               onClick={() => {
-                setShowDrawer((value) => !value);
+                dispatch(setShowDrawer());
               }}
             />
             <Drawer showDrawer={showDrawer} />

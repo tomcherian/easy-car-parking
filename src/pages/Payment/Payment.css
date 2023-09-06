@@ -1,17 +1,23 @@
 .Payment_row_1 {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 16px;
-  justify-items: center;
+  display: flex;
   margin: 18px;
+  justify-content: space-between;
+}
+
+.Payment_row_show {
+  display: flex;
+}
+
+.Payment_row_buttons {
+  display: flex;
+  gap: 10px;
 }
 
 .Payment_card {
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
   border-radius: 8px;
   min-height: 100px;
-  width: 100%;
-  max-width: 250px;
+  width: 250px;
   position: relative;
   padding: 18px;
   background-size: cover;
@@ -24,6 +30,7 @@
   font-size: 24px;
   line-height: 1.235;
   letter-spacing: 0.00735em;
+  box-shadow: 0 0px 10px 5px rgb(29 26 109 / 20%);
 }
 
 .Payment_card_title {
@@ -32,7 +39,6 @@
 
 .Payment_Add_button {
   display: flex;
-  align-items: center;
   justify-content: center;
   cursor: pointer;
 }
@@ -42,25 +48,20 @@
 }
 
 .Payment_card_1 {
-  background-image: url("../../assets/images/Card2.jpg");
+  /* background-image: url("../../assets/images/Card2.jpg"); */
 }
 
 .Payment_card_2 {
-  background-image: url("../../assets/images/Card2.jpg");
+  /* background-image: url("../../assets/images/Card2.jpg"); */
 }
 
 .Payment_card_3 {
-  background-image: url("../../assets/images/Card3.jpg");
+  /* background-image: url("../../assets/images/Card3.jpg"); */
   display: flex;
   flex-direction: column;
   gap: 8px;
   align-items: center;
-  justify-content: center;
   cursor: pointer;
-}
-
-.Payment_card_3 {
-  background-image: url("../../assets/images/Card2.jpg");
 }
 
 .Payment_row_2 {
@@ -84,4 +85,26 @@
 
 .Payment_table_wrapper .MuiPaper-root {
   height: 450px;
+}
+
+.Settle_up_icon {
+  height: 25px;
+  width: 25px;
+  filter: invert(100%) sepia(0%) saturate(2199%) hue-rotate(194deg) brightness(110%) contrast(100%);
+}
+
+.Payment_button {
+  display: flex;
+  width: 200px;
+  height: 45px;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.235;
+  letter-spacing: 0.00735em;
 }

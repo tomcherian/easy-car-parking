@@ -4,14 +4,18 @@ export const commonSlice = createSlice({
   name: "common",
   initialState: {
     isLoading: false,
+    showDrawer: false,
   },
   reducers: {
     setIsLoading: (state) => {
       state.isLoading = !state.isLoading;
     },
+    setShowDrawer: (state) => {
+      state.showDrawer = !state.showDrawer;
+    },
   },
 });
 
-export const { isLoading } = commonSlice.actions;
+export const { setIsLoading, setShowDrawer } = commonSlice.actions;
 export const commonStore = (state) => state.common;
 export default commonSlice.reducer;
