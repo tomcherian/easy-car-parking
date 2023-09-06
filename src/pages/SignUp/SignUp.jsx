@@ -299,7 +299,7 @@ const SignUp = () => {
             <div className="SignUp_field">
               <div className="SignUp_label">Upload Your Picture</div>
               <input
-                className="form-control form-control-lg"
+                className="form-control form-control-lg SignUp_upload"
                 type="file"
                 id="formFile"
                 accept="image/*"
@@ -311,7 +311,7 @@ const SignUp = () => {
               )}
             </div>
             <div className="SignUp_button_wrapper">
-              <button type="submit" className="SignUp_button">
+              <button type="submit" className="SignUp_button btn btn-primary">
                 Sign up
               </button>
             </div>
