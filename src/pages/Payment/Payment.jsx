@@ -19,6 +19,8 @@ import { getUserData } from "../../utils/commonFunctions";
 import moment from "moment/moment";
 import { loginStore } from "../Login/redux/LoginSlice";
 import { capitalizeWords } from "../Home/Home";
+import SettleUpIcon from "../../assets/images/settleUpIcon.png";
+import { commonStore } from "../../commonSlice";
 
 const Payment = () => {
   const dispatch = useDispatch();
@@ -69,9 +71,9 @@ const Payment = () => {
     });
     setRowData(tempRowData);
   }, [paymentListData, usersData]);
-
+  const { showDrawer } = useSelector(commonStore);
   const tableData = {
-    headerBgColor: "#FED94D",
+    headerBgColor: "rgb(25, 118, 210)",
     headerTextColor: "white",
     oddRowBgColor: "",
     evenRowBgColor: "",
@@ -128,23 +130,40 @@ const Payment = () => {
         payment={payment}
         setPayment={setPayment}
       />
-      <div className="Payment_wrapper main_background">
+      <div
+        className={`Payment_wrapper main_background   ${
+          showDrawer ? "Drawer_opened" : ""
+        }`}
+      >
         <div className="Payment_row_1">
-          <div className="Payment_card Payment_card_1">
-            <div className="Payment_card_title">Amount To Be Settled</div>
-            <div className="Payment_card_value">{settleAmount} DHS</div>
-          </div>
-          <div
-            className="Payment_card Payment_card_2 Payment_Add_button"
-            onClick={handleAddPayment}
-          >
-            <div>Add payment</div>
-          </div>
-          <div className="Payment_card Payment_card_3" onClick={handleSettle}>
-            <div className="Payment_card_add_icon">
-              <AddCircleOutlineIcon fontSize="large" />
+          <div className="Payment_row_show">
+            <div className="Payment_card Payment_card_1">
+              <div className="Payment_card_title">Amount To Be Settled</div>
+              <div className="Payment_card_value">{settleAmount} DHS</div>
             </div>
-            <div>Settle Now</div>
+          </div>
+          <div className="Payment_row_buttons">
+            <div
+              className="Payment_card_2 Payment_Add_button"
+              onClick={handleAddPayment}
+            >
+              <button className="btn btn-primary Payment_button">
+                <div className="Payment_card_add_icon">
+                  <AddCircleOutlineIcon fontSize="large" />
+                </div>
+                <div>Add payment</div>
+              </button>
+            </div>
+            <div className="Payment_card_3" onClick={handleSettle}>
+              <button className="btn btn-primary Payment_button">
+                <img
+                  src={SettleUpIcon}
+                  alt="Settle up"
+                  className="Settle_up_icon"
+                />
+                <div>Settle Now</div>
+              </button>
+            </div>
           </div>
         </div>
         <div className="Payment_row_2">
