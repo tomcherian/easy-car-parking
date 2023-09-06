@@ -6,6 +6,7 @@ import { postSignUp, signupStore } from "./redux/SignupSlice";
 import Loader from "../../components/Loader/Loader";
 import EyeLock from "../../assets/images/EyeLock.png";
 import EyeOpen from "../../assets/images/EyeOpen.png";
+import ParkBackground from "../../assets/images/ParkingBackground.png";
 import "./SignUp.css";
 
 const SignUp = () => {
@@ -204,6 +205,11 @@ const SignUp = () => {
 
   return (
     <div className="SignUp_container main_background">
+      <img
+        src={ParkBackground}
+        alt="park background"
+        className="Park_background"
+      />
       <div className="SignUp_card">
         <div className="SignUp_sign_up" onClick={handleSignIn}>
           <p className="Sign_up_paragraph">Have an Account ?</p>

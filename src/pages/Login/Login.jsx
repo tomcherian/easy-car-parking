@@ -7,6 +7,7 @@ import { loginStore, postLogin } from "./redux/LoginSlice";
 import EyeLock from "../../assets/images/EyeLock.png";
 import EyeOpen from "../../assets/images/EyeOpen.png";
 import Loader from "../../components/Loader/Loader";
+import ParkBackground from "../../assets/images/ParkingBackground.png";
 import "./Login.css";
 
 const Login = () => {
@@ -126,6 +127,7 @@ const Login = () => {
   return (
     <div className="Login_container main_background">
       {isLoading && <Loader />}
+      <img src={ParkBackground} alt="park background" className="Park_background"/>
       <div className="Login_card">
         <div className="Login_sign_up" onClick={handleSignUp}>
           <p className="Login_sign_up_paragraph">No Account ?</p><p className="Login_sign_up_paragraph">Sign up</p>
@@ -137,9 +139,7 @@ const Login = () => {
         <div>
           <form onSubmit={handleSubmit}>
             <div className="Login_field_username">
-              <div className="Login_label">
-                Enter your email address
-              </div>
+              <div className="Login_label">Enter your email address</div>
               <input
                 className="Login_input"
                 value={formData.email}
@@ -189,7 +189,7 @@ const Login = () => {
               )}
             </div>
             <div className="Login_button_wrapper">
-              <button type="submit" className="Login_button">
+              <button type="submit" className="Login_button btn btn-primary">
                 Sign in
               </button>
             </div>

@@ -114,19 +114,24 @@ const Home = () => {
       />
       <div className="Home_wrapper main_background">
         <div className="Home_row_1">
-          <div className="Home_card Home_card_1">
-            <div className="Home_card_title">Total Available</div>
-            <div className="Home_card_value">{5 - usedCards} Cards</div>
-          </div>
-          <div className="Home_card Home_card_2" onClick={handleBookNow}>
-            <div className="Home_card_add_icon">
-              <AddCircleOutlineIcon fontSize="large" />
+          <div className="Home_nav_wrapper">
+            <div className="Home_show">
+              <div className="Home_card Home_card_1">
+                <div className="Home_card_title">Total Available</div>
+                <div className="Home_card_value">{5 - usedCards} Cards</div>
+              </div>
+              <div className="Home_card Home_card_3">
+                <div className="Home_card_title">Balance</div>
+                <div className="Home_card_value">{settleAmount} DHS</div>
+              </div>
             </div>
-            <div>Book Now</div>
-          </div>
-          <div className="Home_card Home_card_3">
-            <div className="Home_card_title">Balance</div>
-            <div className="Home_card_value">{settleAmount} DHS</div>
+            <div>
+              <div className="Home_card_2" onClick={handleBookNow}>
+                <button className="btn btn-primary Book_now_button">
+                  <AddCircleOutlineIcon fontSize="large" /> <div>Book Now</div>
+                </button>
+              </div>
+            </div>
           </div>
         </div>
         <div className="Home_row_2">

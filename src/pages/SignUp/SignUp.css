@@ -16,6 +16,9 @@
   background: rgba(255, 255, 255, 0.75);
   max-height: 80vh;
   overflow-y: scroll;
+  background: #7b9bd7;
+  background-image: linear-gradient(to right, #7b9bd7, #ffffff);
+  box-shadow: 0 0px 10px 12px rgb(29 26 109 / 20%);
 }
 
 .SignUp_card::-webkit-scrollbar-thumb {
@@ -134,6 +137,12 @@ body .invalid-feedback {
   display: inline-block;
 }
 
+.Park_background {
+  height: calc(100vh - 100px);
+  min-width: 540px;
+  margin: 50px;
+  border-radius: 50px;
+}
 .Sign_up_paragraph{
   margin-bottom: 0;
 }
