@@ -75,11 +75,13 @@ body {
   border-radius: 4px;
 }
 
-.main_background {
+/* .main_background {
   position: relative;
   background-image: url("../assets/images/bgw.png"),
     linear-gradient(to right, #3696c1, #bbbbff);
-  /* background-blend-mode: soft-light; */
+
+  background-blend-mode: soft-light;
+
   background-blend-mode: lighten;
   background-size: contain;
   background-position: center;
@@ -87,6 +89,24 @@ body {
   background-color: #70b7d6;
   margin-top: 64px;
   transition: left 0.5s ease;
+} */
+
+.main_background {
+  /* background-image: url("../assets/images/BackgroundImage.jpg"); */
+  /* background-size: cover;
+  background-position: center; */
+  /* background-color: #e0e0e0;  */
+  flex: 1;
+  background-color: #70B7D6;
+  background-image: linear-gradient(to right, #3696c1, #bbbbff);
+  margin-top: 64px;
+  transition: left 0.5s ease;
+  /* background-image: url("../assets/images/BackgroundImage.jpg");
+  background-size: cover;
+  background-position: center;
+  background-color: #e0e0e0;
+  flex: 1;
+  margin-top: 64px; */
 }
 
 #root {
