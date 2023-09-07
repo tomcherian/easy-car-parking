@@ -111,7 +111,7 @@ const Payment = () => {
     const body = {
       payerUserId: userData.id,
       receiverUserId: paymentData.user.id,
-      amount: paymentData.amountToSettle,
+      amount: -paymentData.amountToSettle,
       date: moment().format(),
     };
     dispatch(postPaymentSettleUp(body));
