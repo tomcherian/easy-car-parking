@@ -74,8 +74,11 @@
   flex: 1;
   width: 100%;
   max-height: 400px;
-  overflow-y: auto;
   border-radius: 8px;
+}
+
+.Home_table_wrapper .MuiPaper-root {
+  max-height: 400px;
 }
 
 .Home_table_wrapper::-webkit-scrollbar {
