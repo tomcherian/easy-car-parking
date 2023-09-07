@@ -34,14 +34,14 @@
 .ShowAvailability_slot {
   cursor: pointer;
   padding: 6px 18px;
-  color: orange;
-  border: 2px solid orange;
+  color: #0D6EFD;
+  border: 2px solid #0D6EFD;
   border-radius: 8px;
 }
 
 .ShowAvailability_slot_selected {
   color: white;
-  background-color: orange;
+  background-color: #0D6EFD;
 }
 
 .ShowAvailability_day_wrapper {
@@ -59,7 +59,7 @@
 .ShowAvailability_button {
   border-radius: 8px;
   color: white;
-  background-color: orange;
+  background-color: #0D6EFD;
   padding: 12px 32px;
   min-width: 64px;
   cursor: pointer;
@@ -68,7 +68,8 @@
 }
 
 .ShowAvailability_button_disabled {
-  background-color: #ffc87d;
+  background-color: #3498db;
+  cursor: not-allowed;
 }
 
 .ShowAvailability_description {

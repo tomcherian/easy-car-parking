@@ -3,9 +3,13 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
-  height: 500px;
+  height: 480px;
   /* width: 300px; */
 }
+
+/* .Is_credit_popup {
+  height: 460px
+} */
 
 .Payment_popup_wrapper {
   display: flex;
@@ -28,8 +32,8 @@
   justify-content: space-between;
   align-items: center;
   padding: 5px;
-  background-color: rgb(254, 189, 69);
-  color: white;
+  background-color: rgb(241 241 241);
+  color: black;
   border-radius: 5px;
   height: 38px;
 }
@@ -37,7 +41,7 @@
 .SettleUp_heading {
   color: var(--black);
   font-family: Poppins;
-  font-size: 15px;
+  font-size: 20px;
   font-style: normal;
   font-weight: 600;
   line-height: normal;
@@ -47,7 +51,6 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
-  height: 450px;
   overflow-y: scroll;
 }
 
@@ -66,13 +69,13 @@
   margin: 10px;
   border-radius: 4px;
   cursor: pointer;
-  border: 2px solid orange;
+  border: 2px solid #0D6EFD;
   background-color: white;
-  color: orange;
+  color: #0D6EFD;
   flex: 1;
 }
 
 .Div_highlight {
-  background-color: orange;
+  background-color: #0D6EFD;
   color: white;
 }

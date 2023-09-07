@@ -30,7 +30,7 @@ const PaymentPopUp = ({
 
   return (
     <PopUp showPopUp={showPopUp} setShowPopUp={setShowPopUp}>
-      <div className="PaymentPopUp">
+      <div className={`PaymentPopUp ${isCreditList ? "Is_credit_popup" : ""}`}>
         <div className="Payment_popup_wrapper">
           <div className="SettleUp_heading">Settle Up</div>
           <div className="SettleUp_Filter_wrapper">
@@ -57,7 +57,12 @@ const PaymentPopUp = ({
                 <div className="Settle_up_list_wrapper" key={index}>
                   <div className="Settle_up_list_user_wrapper">
                     <div>{capitalizeWords(data.user.name)}</div>
-                    <div>{data.amountToSettle} AED</div>
+                    <div>
+                      {isCreditList
+                        ? -Number(data.amountToSettle).toFixed(2)
+                        : Number(data.amountToSettle).toFixed(2)}{" "}
+                      AED
+                    </div>
                   </div>
                   {!isCreditList && (
                     <div className="Settle_up_button_wrapper">
@@ -76,9 +81,9 @@ const PaymentPopUp = ({
             )}
           </div>
         </div>
-        {!isCreditList && (
+        {/* {!isCreditList && (
           <button className="btn btn-primary">Settle All</button>
-        )}
+        )} */}
       </div>
     </PopUp>
   );
