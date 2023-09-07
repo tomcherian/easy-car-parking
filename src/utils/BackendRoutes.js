@@ -11,4 +11,5 @@ export const BACKEND_ROUTES = {
   POST_PAYMENT_SETTLE_UP: "/v1/api/Payment/settleUp",
   BOOKED_PARKING_CARD: "/v1/api/ParkingCard/BookedParkingCard",
   UPDATE_PROFILE: "/v1/api/Users",
+  GET_BOOKING_HISTORY: "/v1/api/ParkingCard/BookedParkingCardForUser",
 };

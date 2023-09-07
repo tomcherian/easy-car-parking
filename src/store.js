@@ -6,6 +6,7 @@ import signupReducer from "./pages/SignUp/redux/SignupSlice";
 import paymentReducer from "./pages/Payment/redux/PaymentSlice";
 import dashboardReducer from "./pages/Home/redux/HomeSlice";
 import updateProfileReducer from "./pages/Profile/redux/ProfileSlice";
+import bookingHistoryReducer from "./pages/History/redux/bookingHistorySlice";
 
 export const store = configureStore({
   reducer: {
@@ -16,5 +17,6 @@ export const store = configureStore({
     payment: paymentReducer,
     dashboard: dashboardReducer,
     updateProfile: updateProfileReducer,
+    bookingHistory: bookingHistoryReducer,
   },
 });
