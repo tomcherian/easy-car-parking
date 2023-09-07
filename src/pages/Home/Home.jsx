@@ -139,7 +139,7 @@ const Home = () => {
                 <div className="Home_card_value">{5 - usedCards} Cards</div>
               </div>
               <div className="Home_card Home_card_3">
-                <div className="Home_card_title">Balance</div>
+                <div className="Home_card_title">Amount to be received</div>
                 <div className="Home_card_value">{settleAmount} DHS</div>
               </div>
             </div>
