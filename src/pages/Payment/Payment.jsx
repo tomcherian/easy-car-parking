@@ -15,7 +15,7 @@ import {
 import Loader from "../../components/Loader/Loader";
 import "./Payment.css";
 import { dashboardStore, getUsersData } from "../Home/redux/HomeSlice";
-import { getUserData } from "../../utils/commonFunctions";
+import { getDateLocalTime, getUserData } from "../../utils/commonFunctions";
 import moment from "moment/moment";
 import { loginStore } from "../Login/redux/LoginSlice";
 import { capitalizeWords } from "../Home/Home";
@@ -58,7 +58,6 @@ const Payment = () => {
       paymentSettleUpData.map((data) => (settleAmount += data?.amountToSettle));
     setSettleAmount(Number(settleAmount.toFixed(2)));
   }, [paymentSettleUpData]);
-
   useEffect(() => {
     const tempRowData = paymentListData?.map((data) => {
       return [
@@ -66,6 +65,7 @@ const Payment = () => {
         capitalizeWords(
           getUserData(data.payerUserId, usersData)?.name ?? "User"
         ),
+        getDateLocalTime(data.date),
         data?.amount,
       ];
     });
@@ -80,6 +80,7 @@ const Payment = () => {
     headers: [
       { title: "User Id" },
       { title: "Person" },
+      { title: "Paid Date", align: "left" },
       { title: "Amount", align: "right" },
     ],
   };
