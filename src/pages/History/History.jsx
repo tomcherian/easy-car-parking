@@ -27,7 +27,6 @@ const History = () => {
     if (bookingCardHistory?.length > 0) {
       const tempRowData = bookingCardHistory.map((data, idx) => [
         idx + 1,
-        data.user.name,
         data.cardId,
         getDateLocalTime(data.time),
         getDateLocalTime(data.startDate),
@@ -43,9 +42,8 @@ const History = () => {
     oddRowBgColor: "",
     evenRowBgColor: "",
     headers: [
-      { title: "Sl.No" },
-      { title: "User name" },
-      { title: "Card number", align: "left" },
+      { title: "Sl.No",align: "center" },
+      { title: "Card number", align: "center" },
       { title: "Booking time", align: "left" },
       { title: "Start date", align: "left" },
       { title: "End date", align: "left" },
