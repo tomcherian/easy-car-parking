@@ -94,8 +94,8 @@ const SignUp = () => {
         return validatePassword(event);
       case "carNumber":
         return validateCarNumber(event);
-      case "file":
-        return validateFile(event);
+      // case "file":
+      //   return validateFile(event);
       default:
         return "";
     }
@@ -168,7 +168,7 @@ const SignUp = () => {
       password: formData.password,
       carNumber: formData.carNumber,
       imageS3Link: formData.file.base64String,
-      deviceId: null,
+      deviceId: "",
     };
 
     let hasErrors = false;
