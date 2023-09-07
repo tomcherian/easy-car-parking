@@ -38,6 +38,13 @@ const History = () => {
           <div className="History_table_wrapper">
             <BasicTable data={tableData} rowData={rowData} />
           </div>
+          {/* <tableau-viz
+            id="tableau-viz"
+            src="https://prod-uk-a.online.tableau.com/t/parknow/views/PaymentReport/PaymentDashboard"
+            width="1000"
+            height="863"
+            toolbar="bottom"
+          ></tableau-viz> */}
         </div>
       </div>
     </>

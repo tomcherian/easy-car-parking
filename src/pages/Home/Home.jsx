@@ -7,8 +7,13 @@ import BarChart from "../../components/BarChart/BarChart";
 import BookPopUp from "../../components/BookPopUp/BookPopUp";
 import { useDispatch, useSelector } from "react-redux";
 import { bookedParkingCard } from "./redux/HomeSlice";
-import { paymentStore } from "../Payment/redux/PaymentSlice";
+import {
+  getPaymentSettleUpList,
+  paymentStore,
+} from "../Payment/redux/PaymentSlice";
 import { commonStore } from "../../commonSlice";
+import { loginStore } from "../Login/redux/LoginSlice";
+import Loader from "../../components/Loader/Loader";
 
 export function capitalizeWords(str) {
   return str.toLowerCase().replace(/(^|\s)\S/g, (match) => match.toUpperCase());
@@ -28,8 +33,15 @@ const Home = () => {
     (state) => state?.dashboard?.bookedParkingCard
   );
   const [showBookNowPopUp, setShowBookNowPopUp] = useState(false);
-  const { paymentSettleUpData } = useSelector(paymentStore);
+  const { paymentSettleUpData, isLoading: paymentLoading } =
+    useSelector(paymentStore);
   const { showDrawer } = useSelector(commonStore);
+  const { userData, isLoading } = useSelector(loginStore);
+
+  useEffect(() => {
+    dispatch(getPaymentSettleUpList({ userId: userData.id }));
+  }, [userData]);
+
   useEffect(() => {
     let settleAmount = 0;
     if (paymentSettleUpData?.length > 0)
@@ -108,6 +120,7 @@ const Home = () => {
 
   return (
     <>
+      {(isLoading || paymentLoading) && <Loader />}
       <NavBar />
       <BookPopUp
         showPopUp={showBookNowPopUp}
