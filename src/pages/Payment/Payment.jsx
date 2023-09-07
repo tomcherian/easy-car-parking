@@ -60,11 +60,13 @@ const Payment = () => {
   }, [paymentSettleUpData]);
   useEffect(() => {
     const tempRowData = paymentListData?.map((data) => {
+      console.log("getUserData(data.payerUserId, usersData)", getUserData(data.payerUserId, usersData))
       return [
         data.payerUserId,
         capitalizeWords(
           getUserData(data.payerUserId, usersData)?.name ?? "User"
         ),
+        getUserData(data.payerUserId, usersData)?.email,
         getDateLocalTime(data.date),
         data?.amount,
       ];
@@ -78,8 +80,9 @@ const Payment = () => {
     oddRowBgColor: "",
     evenRowBgColor: "",
     headers: [
-      { title: "User Id" },
-      { title: "Person" },
+      { title: "UserId" },
+      { title: "User Name" },
+      { title: "Email" },
       { title: "Paid Date", align: "left" },
       { title: "Amount", align: "right" },
     ],
@@ -138,9 +141,21 @@ const Payment = () => {
       >
         <div className="Payment_row_1">
           <div className="Payment_row_show">
-            <div className="Payment_card Payment_card_1">
-              <div className="Payment_card_title">Amount To Be Settled</div>
-              <div className="Payment_card_value">{settleAmount} DHS</div>
+            <div className="Payment_row_show">
+              <div className="Payment_card Payment_card_1">
+                <div className="Payment_card_title">Amount To Be Settled</div>
+                <div className="Payment_card_value">
+                  {settleAmount > 0 ? 0 : Number(settleAmount)} DHS
+                </div>
+              </div>
+            </div>
+            <div className="Payment_row_show">
+              <div className="Payment_card Payment_card_1">
+                <div className="Payment_card_title">Amount To Be Received</div>
+                <div className="Payment_card_value">
+                  {settleAmount < 1 ? 0 : Number(settleAmount)} DHS
+                </div>
+              </div>
             </div>
           </div>
           <div className="Payment_row_buttons">

@@ -5,7 +5,6 @@
 }
 
 .Payment_row_show {
-  background-color: rgba(0, 0, 255, 0.25);
   display: flex;
   border-radius: 8px;
 }
@@ -47,6 +46,11 @@
 
 .Payment_card_value {
   text-align: end;
+}
+
+.Payment_row_show{
+  display: flex;
+  gap: 20px;
 }
 
 .Payment_card_1 {
