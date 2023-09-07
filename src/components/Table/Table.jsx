@@ -33,7 +33,7 @@ const BasicTable = ({ data, rowData }) => {
 
   return (
     <TableContainer component={Paper}>
-      <Table aria-label="simple table">
+      <Table stickyHeader={true} aria-label="simple table">
         <TableHead>
           <StyledTableRow>
             {data.headers.map((header, index) => {
