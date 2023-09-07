@@ -27,7 +27,7 @@ const Drawer = ({ showDrawer = false }) => {
         <div className="Drawer_icon">
           <HistoryIcon />
         </div>
-        <div className="Drawer_title">History</div>
+        <div className="Drawer_title">Booking History</div>
       </div>
       <div className="Drawer_item" onClick={() => navigate(AllRoutes.PROFILE)}>
         <div className="Drawer_icon">
