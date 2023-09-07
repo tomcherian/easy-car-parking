@@ -51,7 +51,7 @@ const BarChart = ({ data }) => {
     labels: data.map((row) => row.title),
     datasets: [
       {
-        label: "Value",
+        label: "Amount Paid (AED)",
         data: data.map((row) => row.value),
         backgroundColor: data.map((row, index) => getBgColor(index)),
         borderColor: data.map((row, index) => getBorderColor(index)),
@@ -62,16 +62,13 @@ const BarChart = ({ data }) => {
 
   const options = {
     responsive: true,
-
     scales: {
       y: {
         beginAtZero: true,
       },
     },
     plugins: {
-      legend: {
-        display: false,
-      },
+      legend: { display: false },
     },
   };
 

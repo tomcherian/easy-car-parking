@@ -53,13 +53,14 @@ const NavBar = () => {
           </div>
           <div className="NavBar_signout">
             <span className="NavBar_signout_wrapper">
+              <div>{userData.name}</div>
               <div
                 className="NavBar_logo"
                 onClick={() => {
                   setShowUserMenu((value) => !value);
                 }}
               >
-                {userData.name.split(" ").slice(0, 1)}
+                {userData.name.split(" ")[0].slice(0, 1)}
               </div>
               {showUserMenu && (
                 <div className="NavBar_menu_options">

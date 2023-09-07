@@ -4,6 +4,7 @@
   opacity: 0.8;
   position: relative;
   margin-top: 0 !important;
+  background-blend-mode: soft-light !important;
 }
 
 .Login_card {

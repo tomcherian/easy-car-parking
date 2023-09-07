@@ -167,7 +167,8 @@ const SignUp = () => {
       contactNumber: 0,
       password: formData.password,
       carNumber: formData.carNumber,
-      imageS3Link: "string",
+      imageS3Link: formData.file.base64String,
+      deviceId: null,
     };
 
     let hasErrors = false;
