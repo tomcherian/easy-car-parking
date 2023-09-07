@@ -16,10 +16,10 @@ const PaymentPopUp = ({
   useEffect(() => {
     if (settleUpData?.length) {
       setCreditUsersData(
-        settleUpData.filter((userData) => userData.amountToSettle < 1)
+        settleUpData.filter((userData) => userData.amountToSettle > 1)
       );
       setDebitUsersData(
-        settleUpData.filter((userData) => userData.amountToSettle > 0)
+        settleUpData.filter((userData) => userData.amountToSettle < 0)
       );
     }
   }, [settleUpData]);
@@ -59,8 +59,8 @@ const PaymentPopUp = ({
                     <div>{capitalizeWords(data.user.name)}</div>
                     <div>
                       {isCreditList
-                        ? -Number(data.amountToSettle).toFixed(2)
-                        : Number(data.amountToSettle).toFixed(2)}{" "}
+                        ? Number(data.amountToSettle).toFixed(2)
+                        : -Number(data.amountToSettle).toFixed(2)}{" "}
                       AED
                     </div>
                   </div>
