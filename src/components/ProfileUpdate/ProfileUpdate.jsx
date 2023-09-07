@@ -192,12 +192,12 @@ const ProfileUpdate = ({ showProfileInfo, setShowProfileInfo, userData }) => {
     <>
       <div className="ProfileUpdate_container">
         <div className="ProfileUpdate_card">
-          <div className="ProfileUpdate_welcome_title">
+          {/* <div className="ProfileUpdate_welcome_title">
             Welcome{" "}
             <span className="ProfileUpdate_welcome_title_green">
               {userInfo.username}
             </span>
-          </div>
+          </div> */}
           <div className="ProfileUpdate_sign_in">Edit Profile</div>
           <div>
             <form onSubmit={handleSubmit}>

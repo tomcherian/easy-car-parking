@@ -1,16 +1,15 @@
 .ProfileUpdate_container {
-  background-image: url("../../assets/images/BackgroundImage.jpg");
   background-size: cover;
   background-position: center;
   width: 100vw;
-  height: 100vh;
+  height: calc(100vh - 64px);
   position: relative;
 }
 
 .ProfileUpdate_card {
   padding: 44px;
   position: absolute;
-  top: calc(50% + 32px);
+  top: 50%;
   transform: translate(-50%, -50%);
   left: 50%;
   min-width: 540px;
@@ -66,7 +65,7 @@
 }
 
 .ProfileUpdate_field {
-  margin-bottom: 38px;
+  margin-bottom: 20px;
 }
 
 .ProfileUpdate_label {
@@ -76,7 +75,7 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-  margin-bottom: 13px;
+  margin-bottom: 5px;
 }
 
 .ProfileUpdate_input {
