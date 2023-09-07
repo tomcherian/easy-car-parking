@@ -127,8 +127,8 @@ const Home = () => {
         setShowPopUp={setShowBookNowPopUp}
       />
       <div
-        className={`Home_wrapper main_background ${
-          showDrawer ? "Drawer_opened" : ""
+        className={`Home_wrapper main_background Drawer_animation ${
+          showDrawer && "Drawer_opened"
         }`}
       >
         <div className="Home_row_1">

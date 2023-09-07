@@ -1,6 +1,8 @@
 import { useNavigate } from "react-router";
 import "./ProfileUpdate.css";
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { updateUser } from "../../pages/Profile/redux/ProfileSlice";
 
 const userInfo = {
   email: "abc@abcgmail.com",
@@ -13,15 +15,16 @@ const userInfo = {
   },
 };
 
-const ProfileUpdate = ({ showProfileInfo, setShowProfileInfo }) => {
+const ProfileUpdate = ({ showProfileInfo, setShowProfileInfo, userData }) => {
+  const dispatch = useDispatch();
   const [formData, setFormData] = useState({
-    email: userInfo.email,
-    username: userInfo.username,
-    password: userInfo.password,
-    carNumber: userInfo.carNumber,
+    email: userData.email,
+    username: userData.name,
+    password: "",
+    carNumber: userData.carNumber,
     file: {
-      selectedFile: userInfo.file.selectedFile,
-      base64String: userInfo.file.base64String,
+      selectedFile: null,
+      base64String: "",
     },
   });
 
@@ -173,6 +176,14 @@ const ProfileUpdate = ({ showProfileInfo, setShowProfileInfo }) => {
     setTouchedFields(updatedTouched);
 
     if (!hasErrors) {
+      let newUser = { ...userData };
+      newUser.carNumber = formData.carNumber;
+      newUser.email = formData.email;
+      newUser.password = formData.password;
+      newUser.name = formData.username;
+      newUser.imageS3Link = formData.file.base64String;
+
+      dispatch(updateUser(newUser));
       setShowProfileInfo(true);
     }
   };

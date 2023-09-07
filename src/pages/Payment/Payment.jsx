@@ -131,8 +131,8 @@ const Payment = () => {
         setPayment={setPayment}
       />
       <div
-        className={`Payment_wrapper main_background   ${
-          showDrawer ? "Drawer_opened" : ""
+        className={`Payment_wrapper main_background Drawer_animation ${
+          showDrawer && "Drawer_opened"
         }`}
       >
         <div className="Payment_row_1">

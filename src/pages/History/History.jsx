@@ -30,8 +30,8 @@ const History = () => {
     <>
       <NavBar />
       <div
-        className={`History_wrapper main_background ${
-          showDrawer ? "Drawer_opened" : ""
+        className={`History_wrapper main_background Drawer_animation ${
+          showDrawer && "Drawer_opened"
         }`}
       >
         <div className="History_row">
