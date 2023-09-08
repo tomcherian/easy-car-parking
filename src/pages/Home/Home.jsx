@@ -87,13 +87,13 @@ const Home = () => {
   };
 
   const chartData = [
-    { title: "Jan", value: 80 },
-    { title: "Feb", value: 20 },
-    { title: "Mar", value: 40 },
-    { title: "Apr", value: 10 },
-    { title: "May", value: 100 },
-    { title: "Jun", value: 130 },
-    { title: "Jul", value: 60 },
+    { title: "Jan", value: 90 },
+    { title: "Feb", value: 85 },
+    { title: "Mar", value: 80 },
+    { title: "Apr", value: 75 },
+    { title: "May", value: 80 },
+    { title: "Jun", value: 50 },
+    { title: "Jul", value: 45 },
     { title: "Aug", value: 30 },
   ];
 
