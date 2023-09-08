@@ -116,6 +116,26 @@ const Payment = () => {
     dispatch(postPaymentSettleUp(body));
   };
 
+  const getSettleAmount = () => {
+    let amountShouldSettle = 0;
+    paymentSettleUpData.forEach((data) => {
+      if (data.amountToSettle < 0) {
+        amountShouldSettle += data.amountToSettle;
+      }
+    });
+    return amountShouldSettle;
+  };
+
+  const getReceivingAmount = () => {
+    let amountShouldReceivingAmount = 0;
+    paymentSettleUpData.forEach((data) => {
+      if (data.amountToSettle > 0) {
+      amountShouldReceivingAmount += data.amountToSettle;
+      }
+    });
+    return amountShouldReceivingAmount;
+  };
+
   return (
     <>
       {(isLoading || dashboardLoading) && <Loader />}
@@ -144,7 +164,8 @@ const Payment = () => {
               <div className="Payment_card Payment_card_1">
                 <div className="Payment_card_title">Amount To Be Settled</div>
                 <div className="Payment_card_value">
-                  {settleAmount > 0 ? 0 : -Number(settleAmount).toFixed(2)} DHS
+                  {settleAmount < 0 ? 0 : -Number(getSettleAmount()).toFixed(2)}{" "}
+                  DHS
                 </div>
               </div>
             </div>
@@ -152,7 +173,10 @@ const Payment = () => {
               <div className="Payment_card Payment_card_1">
                 <div className="Payment_card_title">Amount To Be Received</div>
                 <div className="Payment_card_value">
-                  {settleAmount < 1 ? 0 : Number(settleAmount).toFixed(2)} DHS
+                  {settleAmount < 1
+                    ? 0
+                    : Number(getReceivingAmount()).toFixed(2)}{" "}
+                  DHS
                 </div>
               </div>
             </div>
