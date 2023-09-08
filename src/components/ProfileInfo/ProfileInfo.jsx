@@ -12,7 +12,11 @@ const ProfileInfo = ({ showProfileInfo, setShowProfileInfo, userData }) => {
       <div className="ProfileInfo_content">
         <div className="ProfileInfo_image_wrapper">
           <div className="ProfileInfo_image">
-            <img className="ProfileInfo_img_tag" src={userData.imageS3Link} alt="Profile" />
+            <img
+              className="ProfileInfo_img_tag"
+              src={userData.imageS3Link}
+              alt=""
+            />
           </div>
         </div>
         <div className="ProfileInfo_item">
@@ -24,11 +28,6 @@ const ProfileInfo = ({ showProfileInfo, setShowProfileInfo, userData }) => {
           <div>Username</div>
           <div>:</div>
           {userData.name}
-        </div>
-        <div className="ProfileInfo_item">
-          <div>Password</div>
-          <div>:</div>
-          {userData.password}
         </div>
         <div className="ProfileInfo_item">
           <div>Car Number</div>
