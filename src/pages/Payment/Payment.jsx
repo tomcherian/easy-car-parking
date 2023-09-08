@@ -60,7 +60,6 @@ const Payment = () => {
   }, [paymentSettleUpData]);
   useEffect(() => {
     const tempRowData = paymentListData?.map((data) => {
-      console.log("getUserData(data.payerUserId, usersData)", getUserData(data.payerUserId, usersData))
       return [
         data.payerUserId,
         capitalizeWords(
@@ -145,7 +144,7 @@ const Payment = () => {
               <div className="Payment_card Payment_card_1">
                 <div className="Payment_card_title">Amount To Be Settled</div>
                 <div className="Payment_card_value">
-                  {settleAmount > 0 ? 0 : Number(settleAmount)} DHS
+                  {settleAmount > 0 ? 0 : -Number(settleAmount).toFixed(2)} DHS
                 </div>
               </div>
             </div>
@@ -153,7 +152,7 @@ const Payment = () => {
               <div className="Payment_card Payment_card_1">
                 <div className="Payment_card_title">Amount To Be Received</div>
                 <div className="Payment_card_value">
-                  {settleAmount < 1 ? 0 : Number(settleAmount)} DHS
+                  {settleAmount < 1 ? 0 : Number(settleAmount).toFixed(2)} DHS
                 </div>
               </div>
             </div>
